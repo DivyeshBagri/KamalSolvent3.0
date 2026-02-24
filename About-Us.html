@@ -16,123 +16,119 @@
             - For medium screens: Modify the tablet values (60px/40px)
             - For small screens: Modify the mobile values (40px/30px)
             */
-
-             body, h1, h2, h3, h4, h5, h6, p, a, span, div {
-            font-family: 'Poppins', sans-serif !important;
+/* Apply Poppins to all text elements */
+    body, h1, h2, h3, h4, h5, h6, p, span, a, li, .column-heading, .heading-style-h5, .certificate-name {
+        font-family: 'Poppins', sans-serif !important;
+    }
+    
+    /* Standardize all headings to 41px */
+    .column-heading, .heading-style-h5, .section-heading, .content-heading {
+        font-size: 41px !important;
+        line-height: 1.2 !important;
+        font-weight: 600 !important;
+    }
+        /* ========== NAVBAR STYLES ========== */
+        /* Custom navbar container with yellow background */
+        .navbar-logo-center-container {
+            background: #fbffd3;
+            box-shadow: 10 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: relative;
+            z-index: 1000;
         }
         
-        /* Ensure all headings are consistent at 41px */
-        h1, h2, h3, .heading-style-h2, .heading-style-h2.about {
-            font-size: 41px !important;
-            font-weight: 600 !important;
+        /* Main container for navbar content */
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-            .section-padding {
-                padding: 20px 0; /* Default section padding (top/bottom) */
-            }
-            
-            .section-padding-top {
-                padding-top: 30px; /* When you need different top/bottom spacing */
-            }
-            
-            .section-padding-bottom {
-                padding-bottom: 30px;
-            }
-            
-            /* Responsive adjustments for section spacing */
-            @media (max-width: 991px) { /* Tablet */
-                .section-padding {
-                    padding: 20px 0;
-                }
-                .section-padding-top {
-                    padding-top: 30px;
-                }
-                .section-padding-bottom {
-                    padding-bottom: 30px;
-                }
-            }
-            
-            @media (max-width: 767px) { /* Mobile */
-                .section-padding {
-                    padding: 30px 0;
-                }
-                .section-padding-top {
-                    padding-top: 30px;
-                }
-                .section-padding-bottom {
-                    padding-bottom: 30px;
-                }
-            }
-             h1, h2, h3, .heading-style-h2, .heading-style-h2.about {
-                font-size: 32px !important;
-            }
-            
-            /* ========== NAVBAR STYLES ========== */
-            .navbar-logo-center-container {
-                background: #fbffd3;
-                box-shadow: 10 2px 10px rgba(0,0,0,0.1);
-                padding: 15px 0;
-                position: relative;
-                z-index: 1000;
-            }
-            
-            .container {
-                max-width: 1050px;
-                margin: 0 auto;
-                padding: 0 20px;
-            }
-            
-            .navbar-brand-three {
-                display: flex;
-                align-items: center;
-                margin-right: 20px;
-            }
-            
-            .navbar-wrapper {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-                position: relative;
-            }
-            
-            .navbar-brand {
-                position: absolute;
-                left: 50%;
-                transform: translateX(-60%);
-            }
-            
-            .navbar-brand img {
-                height: 50px;
-                width: auto;
-            }
-            
-            .nav-menu-left, .nav-menu-right {
-                display: flex;
-                align-items: center;
-                gap: 30px;
+
+        /* Flex layout for navbar wrapper */
+        .navbar-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Centered logo positioning */
+        .navbar-brand {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-60%);
+        }
+
+        .navbar-brand-three {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; /* Space between logo and nav items */
+}
+
+        /* Logo image sizing */
+        .navbar-brand img {
+            height: 50px;
+            width: auto;
+        }
+        
+        /* Navigation menu sections */
+        .nav-menu-left, .nav-menu-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        /* Main navbar content alignment */
+        .navbar-content {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: center;
+        }
+        
+        /* Right-aligned contact button */
+        .navbar-right-button {
+            margin-left: auto;
+            padding-left: 20px;
+        }
+        
+        /* Hide contact button on mobile */
+        @media (max-width: 991px) {
+            .navbar-right-button {
+                display: none;
             }
             
             .navbar-content {
-                display: flex;
-                align-items: center;
-                flex-grow: 1;
-                justify-content: center;
+                justify-content: space-between;
             }
-            
-            .navbar-right-button {
-                margin-left: auto;
-                padding-left: 20px;
+        }
+
+        @media screen and (max-width: 991px) {
+    .nav-menu-three {
+        background-color: #fff;
+        border-radius: 51px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        padding: 2px;
+        display: flex
+;
+        box-shadow: 0 8px 50px #0000000d;
+    }
+}
+
+        /* ========== MOBILE OPTIMIZATION ========== */
+        @media (max-width: 767px) {
+            .logo-slider-item {
+                margin: 0 25px;
             }
-            
-            @media (max-width: 991px) {
-                .navbar-right-button {
-                    display: none;
-                }
-                .navbar-content {
-                    justify-content: space-between;
-                }
+            .logo-slider-item img {
+                max-width: 100px;
             }
-            
+        }
+           
             /* ========== IMAGE ZOOM SECTION ========== */
             .image-zoom-container {
                 position: relative;
