@@ -1,94 +1,152 @@
 <!DOCTYPE html>
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamal Solvents</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <meta content="Webflow" name="generator"/>
-    <!-- SEO Meta Tags -->
-    
-    <!-- Stylesheets -->
-    <link href="https://cdn.prod.website-files.com/6607a6ef83fae9272e214029/css/kamal-solvents-f8b61e.webflow.166346515.min.css" rel="stylesheet" type="text/css"/>
-    
-    <!-- Main CSS -->
-    <link href="https://cdn.prod.website-files.com/6607a6ef83fae9272e214029/css/kamal-solvents-f8b61e.webflow.166346515.min.css" rel="stylesheet" type="text/css"/>
-    <style>
-        /* Consistent heading styles */
-        h1, h2, h3, h4, h5, h6,
-        .heading-style-h2, .heading-style-h2.about,
-        .heading-8, .heading-10 {
-            font-size: 32px !important;
-            font-weight: 700 !important;
-        }
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Kamal Solvents</title>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <meta content="Webflow" name="generator"/>
+        <link href="https://cdn.prod.website-files.com/6607a6ef83fae9272e214029/css/kamal-solvents-f8b61e.webflow.166346515.min.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <!-- Add SweetAlert CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+        <style>
+         body,
+    html,
+    body *,
+    .heading-style-h5, 
+    .certificate-name,
+    .nav-link,
+    .nav-link-accent,
+    .button-primary,
+    .text-block,
+    h1, h2, h3, h4, h5, h6,
+    p, span, a, li,
+    input, textarea, select, button {
+        font-family: 'Poppins', sans-serif !important;
         
-        .heading-kamal {
-            font-weight: 500 !important;
-        }
-        
-        body,
-        body *:not(script):not(style):not(link):not(meta) {
-            font-family: 'Poppins', sans-serif !important;
-        }
-        
-        /* Custom styles for right-aligned contact button */
-        .navbar-logo-center-container {
-            background: #fbffd3;
-            box-shadow: 10 2px 10px rgba(0,0,0,0.1);
-            padding: 15px 0;
-            position: relative;
-            z-index: 1000;
-        }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    }
 
-        .navbar-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            position: relative;
-        }
+            /* GLOBAL FONT STYLES */
+            body, html {
+                font-family: 'Poppins', sans-serif;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                font-smoothing: antialiased;
+                text-rendering: optimizeLegibility;
+                margin: 0;
+                padding: 0;
+                overflow-x: hidden;
+            }
+            
+            /* All text elements */
+            body * {
+                font-family: inherit;
+            }            
+            /* Headings */
+            .heading-style-h5, 
+            .certificate-name,
+            .nav-link,
+            .nav-link-accent,
+            .button-primary,
+            .text-block {
+                font-family: inherit;
+            }
 
-        .navbar-brand {
-            position: fixed;
-            left: 50%;
-            transform: translateX(60%);
-        }
-        
-        .navbar-brand-three {
-            display: flex;
-            align-items: center;
-            margin-right: 20px; /* Space between logo and nav items */
-        }
+            /* NAVBAR STYLES */
+            /* Main navbar container with yellow background */
+            .navbar-logo-center-container {
+                background: #fbffd3;
+                box-shadow: 10 2px 10px rgba(0,0,0,0.1);
+                padding: 15px 0;
+                position: relative;
+                z-index: 1000;
+            }
+            
+            /* Container for navbar content with max-width */
+            .container {
+                max-width: 1000px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
 
-        .navbar-brand img {
-            height: 50px;
-            width: auto;
-        }
-        
-        .nav-menu-left, .nav-menu-right {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-        
-        .navbar-content {
-            display: flex;
-            align-items: center;
-            flex-grow: 1;
-            justify-content: center;
-        }
-        
-        .navbar-right-button {
-            margin-left: auto;
-            padding-left: 20px;
-        }
+            /* Flex wrapper for navbar elements */
+            .navbar-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                position: relative;
+            }
+
+            /* Centered logo positioning */
+            .navbar-brand {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-60%);
+            }
+            
+            /* Logo container styling */
+            .navbar-brand-three {
+                display: flex;
+                align-items: center;
+                margin-right: 20px; /* Space between logo and nav items */
+            }
+
+            /* Logo image sizing */
+            .navbar-brand img {
+                height: 50px;
+                width: auto;
+            }
+            
+            /* Navigation menu sections (left and right) */
+            .nav-menu-left, .nav-menu-right {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            /* Main navbar content area */
+            .navbar-content {
+                display: flex;
+                align-items: center;
+                flex-grow: 1;
+                justify-content: center;
+            }
+            
+            /* Contact button positioning */
+            .navbar-right-button {
+                margin-left: auto;
+                padding-left: 20px;
+            }
+            
+            /* Hide contact button on mobile */
+            @media (max-width: 991px) {
+                .navbar-right-button {
+                    display: none;
+                }
+                
+                .navbar-content {
+                    justify-content: space-between;
+                }
+            }
+
+            .nav-menu-three {               
+                border-radius: 50px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 10px;
+                padding: 7px;
+                display: flex;
+                box-shadow: 10 8px 50px #0000000d;
+            }
+            .navbar-logo-center-container.shadow-three {
+    background-color: #fbffd3;
+    width: 100%;
+    max-width: 1140px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
         
         /* Hide the contact button in mobile menu since it will be visible in the nav */
         @media (max-width: 991px) {
