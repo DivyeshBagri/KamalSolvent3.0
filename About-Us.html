@@ -35,14 +35,7 @@
 
         /* ============================================================
            2. TYPOGRAPHY — Base (desktop ≥ 901px)
-
-           Heading scale:
-             h1  — page title             → 32px  (set by global rule below)
-             h2  — section titles         → 32px  (Rooted Traditions, Certifications, CTA)
-             h3  — sub-section titles     → 24px  (Mission, Vision, timeline dates)
         ============================================================ */
-
-        /* Global reset — everything starts at 32px bold */
         h1, h2, h3, h4, h5, h6,
         .heading-style-h2,
         .heading-style-h2.about,
@@ -55,13 +48,10 @@
 
         .heading-kamal { font-weight: 500 !important; }
 
-        /* ── h3 sub-headings: Mission, Vision, timeline dates → 24px desktop ── */
         h3 {
             font-size: 24px !important;
         }
 
-        /* ── "Backed by Prestigious Certifications" inline style overrides global;
-              remove the inline style="font-size:41px" effect by capping it here ── */
         .logo2_component h2 {
             font-size: 32px !important;
         }
@@ -83,7 +73,7 @@
         }
 
         /* ============================================================
-           4. NAVBAR
+           4. NAVBAR — matched to solar page
         ============================================================ */
         .navbar-logo-center-container {
             background: #fbffd3;
@@ -93,6 +83,14 @@
             z-index: 1000;
         }
 
+        /* Container for navbar content with max-width */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Flex wrapper for navbar elements */
         .navbar-wrapper {
             display: flex;
             justify-content: space-between;
@@ -101,29 +99,34 @@
             position: relative;
         }
 
+        /* Centered logo positioning */
         .navbar-brand {
             position: absolute;
             left: 50%;
             transform: translateX(-60%);
         }
 
+        /* Logo container styling */
         .navbar-brand-three {
             display: flex;
             align-items: center;
             margin-right: 20px;
         }
 
+        /* Logo image sizing */
         .navbar-brand img {
             height: 50px;
             width: auto;
         }
 
+        /* Navigation menu sections (left and right) */
         .nav-menu-left, .nav-menu-right {
             display: flex;
             align-items: center;
             gap: 30px;
         }
 
+        /* Main navbar content area */
         .navbar-content {
             display: flex;
             align-items: center;
@@ -131,14 +134,21 @@
             justify-content: center;
         }
 
+        /* Contact button positioning */
         .navbar-right-button {
             margin-left: auto;
             padding-left: 20px;
         }
 
+        /* Hide contact button on mobile */
         @media (max-width: 991px) {
-            .navbar-right-button  { display: none; }
-            .navbar-content       { justify-content: space-between; }
+            .navbar-right-button {
+                display: none;
+            }
+
+            .navbar-content {
+                justify-content: space-between;
+            }
         }
 
         .nav-menu-three {
@@ -158,6 +168,15 @@
             max-width: 1140px;
             padding-top: 9px;
             padding-bottom: 9px;
+        }
+
+        /* iPad Mini/Air 600–900px — prevent nav wrap */
+        @media (min-width: 600px) and (max-width: 900px) {
+            .nav-menu-three {
+                flex-wrap: nowrap !important;
+                gap: 2px !important;
+                padding: 5px !important;
+            }
         }
 
         /* ============================================================
@@ -393,9 +412,6 @@
 
         /* ============================================================
            10. RESPONSIVE — Tablet ≤ 991px
-
-           h2 section titles  → 24px
-           h3 sub-headings    → 20px
         ============================================================ */
         @media (max-width: 991px) {
             .navbar-right-button                        { display: none; }
@@ -420,7 +436,6 @@
             .padding-section-large-2,
             .padding-section-medium-2                  { padding-top: 2rem; padding-bottom: 0rem; }
 
-            /* ── Section h2 titles → 24px on tablet ── */
             h2,
             .heading-style-h2,
             .heading-style-h2.about,
@@ -428,37 +443,28 @@
             .logo2_component h2,
             .cta13_content-left h2                     { font-size: 24px !important; }
 
-            /* ── Sub-heading h3 (Mission, Vision) → 20px on tablet ── */
             h3,
             .section_layout66 h3                       { font-size: 20px !important; }
 
-            /* ── Timeline date h3 stays smaller ── */
             .timeline-content h3                       { font-size: 16px !important; }
 
-            /* Mission / Vision layout */
             .section_layout66 [style*="display:flex"],
             .section_layout66 [style*="display: flex"] { gap: 30px !important; }
             .section_layout66 [style*="flex:1"],
             .section_layout66 [style*="flex: 1"]       { min-width: 260px; }
 
-            /* CTA grid */
             .cta13_component                           { grid-template-columns: 1fr !important; gap: 20px; }
 
-            /* Timeline */
             .timeline-item                             { flex: 0 0 260px; }
             .timeline-container                        { padding: 0 40px; }
         }
 
         /* ============================================================
            11. RESPONSIVE — iPad Mini/Air 600–900px
-
-           Same heading scale as tablet:
-             h2 section titles → 24px
-             h3 sub-headings   → 20px
         ============================================================ */
         @media (min-width: 600px) and (max-width: 900px) {
 
-            /* ── Navbar: prevent 2-line wrap ── */
+            /* Navbar: prevent 2-line wrap */
             .nav-menu-three {
                 flex-wrap: nowrap !important;
                 gap: 2px !important;
@@ -490,11 +496,9 @@
                 width: auto !important;
             }
 
-            /* ── Section spacing ── */
             .padding-section-large-2,
             .padding-section-medium-2                  { padding-top: 1.5rem; padding-bottom: 0rem; }
 
-            /* ── Section h2 titles → 24px on iPad ── */
             h2,
             .heading-style-h2,
             .heading-style-h2.about,
@@ -502,29 +506,23 @@
             .logo2_component h2,
             .cta13_content-left h2                     { font-size: 24px !important; }
 
-            /* ── Sub-heading h3 (Mission, Vision) → 20px on iPad ── */
             h3,
             .section_layout66 h3                       { font-size: 20px !important; }
 
-            /* ── Timeline date h3 stays smaller ── */
             .timeline-content h3                       { font-size: 14px !important; }
 
-            /* ── Timeline layout ── */
             .timeline-container                        { padding: 0 40px; }
             .timeline-item                             { flex: 0 0 260px; }
             .timeline-item img                         { height: 175px !important; }
             .timeline-content p                        { font-size: 13px !important; }
 
-            /* ── Intro paragraph text ── */
             .text-align-center [style*="font-size: 18px"],
             .text-align-center [style*="font-size:18px"] { font-size: 15px !important; }
 
-            /* ── Mission / Vision ── */
             .section_layout66 [style*="display:flex"],
             .section_layout66 [style*="display: flex"] { gap: 24px !important; }
             .text-size-medium-14                       { font-size: 15px; }
 
-            /* ── Certifications logos ── */
             .logo2_logo-list                           { gap: 16px; }
             .logo2_wrapper                             { margin: 10px; padding: 12px; }
             .logo2_logo                                { width: 110px; }
@@ -532,19 +530,14 @@
             .apeda-logo img, .food-safety-logo img     { width: 110px !important; }
             .iso-logo img                              { width: 90px !important; }
 
-            /* ── CTA ── */
             .cta13_component                           { grid-template-columns: 1fr !important; gap: 20px; }
 
-            /* ── Footer ── */
             .footer3_top-wrapper                       { grid-template-columns: 1fr !important; }
             .footer3_menu-wrapper                      { grid-template-columns: repeat(2, 1fr) !important; }
         }
 
         /* ============================================================
            12. RESPONSIVE — Mobile ≤ 767px
-
-           h2 section titles → 20px
-           h3 sub-headings   → 18px
         ============================================================ */
         @media (max-width: 767px) {
             .logo-slider-item                          { margin: 0 15px; }
@@ -562,7 +555,6 @@
             .padding-section-large-2,
             .padding-section-medium-2                  { padding-top: 1.5rem; padding-bottom: 0rem; }
 
-            /* ── Section h2 titles → 20px on mobile ── */
             h2,
             .heading-style-h2,
             .heading-style-h2.about,
@@ -570,48 +562,38 @@
             .logo2_component h2,
             .cta13_content-left h2                     { font-size: 20px !important; }
 
-            /* ── Sub-heading h3 (Mission, Vision) → 18px on mobile ── */
             h3,
             .section_layout66 h3                       { font-size: 18px !important; }
 
-            /* ── Timeline date h3 ── */
             .timeline-content h3                       { font-size: 15px !important; }
             .timeline-content p                        { font-size: 13px !important; }
 
-            /* Timeline layout */
             .timeline-container                        { padding: 0 30px; }
             .timeline-arrow                            { width: 38px; height: 38px; }
             .timeline-arrow::after                     { width: 10px; height: 10px; }
             .timeline-item                             { flex: 0 0 230px; }
             .timeline-item img                         { height: 160px !important; }
 
-            /* Mission / Vision stack */
             .section_layout66 [style*="display:flex"],
             .section_layout66 [style*="display: flex"] { flex-direction: column !important; gap: 20px !important; }
             .section_layout66 [style*="flex:1"],
             .section_layout66 [style*="flex: 1"]       { min-width: unset !important; width: 100%; }
             .text-size-medium-14                       { font-size: 15px; }
 
-            /* CTA */
             .cta13_component                           { grid-template-columns: 1fr !important; gap: 16px; }
 
-            /* Intro text */
             .text-align-center [style*="font-size: 18px"],
             .text-align-center [style*="font-size:18px"] { font-size: 14px !important; }
         }
 
         /* ============================================================
            13. RESPONSIVE — Small mobile ≤ 479px
-
-           h2 section titles → 18px
-           h3 sub-headings   → 16px
         ============================================================ */
         @media (max-width: 479px) {
             .image-zoom-container                      { height: 180px; }
             .footer3_menu-wrapper                      { grid-template-columns: 1fr !important; grid-row-gap: 14px; }
             .gallery4_row                              { grid-template-columns: 1fr !important; }
 
-            /* ── Section h2 titles → 18px on small mobile ── */
             h2,
             .heading-style-h2,
             .heading-style-h2.about,
@@ -619,15 +601,12 @@
             .logo2_component h2,
             .cta13_content-left h2                     { font-size: 18px !important; }
 
-            /* ── Sub-heading h3 (Mission, Vision) → 16px on small mobile ── */
             h3,
             .section_layout66 h3                       { font-size: 16px !important; }
 
-            /* ── Timeline date h3 ── */
             .timeline-content h3                       { font-size: 13px !important; margin: 6px 0 !important; }
             .timeline-content p                        { font-size: 12px !important; }
 
-            /* Timeline */
             .timeline-container                        { padding: 0 20px; }
             .timeline-arrow                            { width: 32px; height: 32px; }
             .timeline-arrow::after                     { width: 8px; height: 8px; border-width: 2px; }
@@ -635,12 +614,10 @@
             .timeline-item img                         { height: 140px !important; }
             .timeline-content                          { padding: 10px !important; }
 
-            /* Mission / Vision */
             .text-size-medium-14                       { font-size: 14px; }
             .section_layout66 [style*="margin-bottom:40px"],
             .section_layout66 [style*="margin-bottom: 40px"] { margin-bottom: 20px !important; }
 
-            /* Certifications logos */
             .logo2_logo                                { width: 70px; }
             .haccp-logo img, .fssai-logo img,
             .apeda-logo img, .food-safety-logo img     { width: 70px !important; }
@@ -648,11 +625,9 @@
             .logo2_wrapper                             { padding: 8px; margin: 6px; }
             .logo2_logo-list                           { gap: 4px; }
 
-            /* Intro text */
             .text-align-center [style*="font-size: 18px"],
             .text-align-center [style*="font-size:18px"] { font-size: 13px !important; }
 
-            /* Footer grid */
             .padding-top.padding-medium {
                 display: grid;
                 grid-template-columns: 1fr;
@@ -829,11 +804,9 @@
                                 <div class="max-width-large align-center">
                                     <div class="text-align-center">
                                         <div class="margin-bottom margin-xsmall">
-                                            <!-- Tagline label — intentionally NOT a heading -->
                                             <div class="text-weight-semibold">35+ YEARS OF TRUST &amp; EXPERTISE</div>
                                         </div>
                                         <div class="margin-bottom margin-small">
-                                            <!-- ✅ SEO: Single h1 — primary page topic -->
                                             <h1 class="heading-style-h2 about">Kamal Solvent Extractions Pvt Ltd : A Brief History</h1>
                                         </div>
                                         <div style="font-size: 18px;">
@@ -850,7 +823,6 @@
 
                                         <div class="timeline-scroll">
 
-                                            <!-- Timeline Item 1: February 1990 -->
                                             <div class="timeline-item">
                                                 <div class="timeline-image-wrapper">
                                                     <img src="https://raw.githubusercontent.com/DivyeshBagri/test/main/timeline/Screenshot%202025-04-15%20120920.png"
@@ -869,7 +841,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Timeline Item 2: July 2004 -->
                                             <div class="timeline-item">
                                                 <div class="timeline-image-wrapper">
                                                     <img src="https://raw.githubusercontent.com/DivyeshBagri/test/main/timeline/2.png"
@@ -888,7 +859,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Timeline Item 3: August 2004 -->
                                             <div class="timeline-item">
                                                 <div class="timeline-image-wrapper">
                                                     <img src="https://raw.githubusercontent.com/DivyeshBagri/test/main/timeline/5.png"
@@ -907,7 +877,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Timeline Item 4: April 2013 -->
                                             <div class="timeline-item">
                                                 <div class="timeline-image-wrapper">
                                                     <img src="https://raw.githubusercontent.com/DivyeshBagri/test/main/timeline/4.png"
@@ -926,7 +895,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Timeline Item 5: September 2023 -->
                                             <div class="timeline-item">
                                                 <div class="timeline-image-wrapper">
                                                     <img src="https://cdn.prod.website-files.com/6607a6ef83fae9272e214029/667cbf6d16c72fb277ff51cf_7.jpg"
@@ -945,7 +913,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Timeline Item 6: November 2023 -->
                                             <div class="timeline-item">
                                                 <div class="timeline-image-wrapper">
                                                     <img src="https://raw.githubusercontent.com/DivyeshBagri/test/main/timeline/time%20line%2C%20sept.%202023.jpg"
@@ -982,24 +949,19 @@
                         <div class="padding-section-large-2 about">
 
                             <div style="text-align:center;margin-bottom:40px;">
-                                <!-- ✅ SEO: h2 — major section title -->
                                 <h2>Rooted Traditions, Progressive Values:</h2>
                             </div>
 
                             <div style="display:flex;justify-content:center;gap:50px;flex-wrap:wrap;">
 
-                                <!-- Mission -->
                                 <div style="flex:1;min-width:300px;">
-                                    <!-- ✅ SEO: h3 — sub-section under h2 -->
                                     <h3 style="margin:0 0 8px 0;">Mission</h3>
                                     <p class="text-size-medium-14">
                                         Our mission is to establish ourselves as a world-class organisation that will set a benchmark in terms of standards of excellence &amp; also to serve our consumers with the best quality of physically refined rice bran oil ensuring highest health benefits while adhering to eco-friendly practices &amp; policies.
                                     </p>
                                 </div>
 
-                                <!-- Vision -->
                                 <div style="flex:1;min-width:300px;">
-                                    <!-- ✅ SEO: h3 — parallel sub-section -->
                                     <h3 style="margin:0 0 8px 0;">Vision</h3>
                                     <p class="text-size-medium-14">
                                         To excel in the industry by supplying best quality of edible oil &amp; creating an identity for ourselves in the field of health &amp; nutrition. We strive to look beyond the boundaries of competition by being quality centric in our manufacturing practices.
@@ -1021,7 +983,6 @@
                             <div class="logo2_component">
 
                                 <div class="margin-bottom margin-small">
-                                    <!-- ✅ SEO: h2 — major section; inline style removed, size controlled by CSS -->
                                     <h2>Backed by Prestigious Certifications</h2>
                                 </div>
 
@@ -1068,7 +1029,6 @@
                             <div class="w-layout-grid cta13_component">
 
                                 <div class="cta13_content-left">
-                                    <!-- ✅ SEO: h2 — section-level CTA heading -->
                                     <h2 class="heading-style-h2 left">Interested in working with us? Hit us up.</h2>
                                 </div>
 
@@ -1102,7 +1062,6 @@
                         <div class="padding-bottom padding-xxlarge">
                             <div class="w-layout-grid footer3_top-wrapper">
 
-                                <!-- Company Info -->
                                 <div class="footer3_left-wrapper">
                                     <div class="margin-bottom margin-medium">
                                         <a href="#" class="footer3_logo-link w-nav-brand">
@@ -1129,7 +1088,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Footer Links -->
                                 <div class="w-layout-grid footer3_menu-wrapper">
 
                                     <nav class="footer3_link-list" aria-label="Footer links column 1">
@@ -1166,7 +1124,6 @@
 
                         <div class="padding-top padding-medium">
 
-                            <!-- Social Icons -->
                             <div class="w-layout-grid footer3_social-list">
 
                                 <a href="https://www.facebook.com/KamalEnergyMaxRiceBranOil/" target="_blank" rel="noopener noreferrer" class="footer3_social-link w-inline-block" aria-label="Kamal Solvents on Facebook">
