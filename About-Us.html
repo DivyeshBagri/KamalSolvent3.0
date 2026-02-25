@@ -75,110 +75,127 @@
         /* ============================================================
            4. NAVBAR — matched to solar page
         ============================================================ */
-        .navbar-logo-center-container {
-            background: #fbffd3;
-            box-shadow: 10 2px 10px rgba(0,0,0,0.1);
-            padding: 15px 0;
-            position: relative;
-            z-index: 1000;
-        }
-
-        /* Container for navbar content with max-width */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Flex wrapper for navbar elements */
-        .navbar-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            position: relative;
-        }
-
-        /* Centered logo positioning */
-        .navbar-brand {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-60%);
-        }
-
-        /* Logo container styling */
-        .navbar-brand-three {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-        }
-
-        /* Logo image sizing */
-        .navbar-brand img {
-            height: 50px;
-            width: auto;
-        }
-
-        /* Navigation menu sections (left and right) */
-        .nav-menu-left, .nav-menu-right {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-        /* Main navbar content area */
-        .navbar-content {
-            display: flex;
-            align-items: center;
-            flex-grow: 1;
-            justify-content: center;
-        }
-
-        /* Contact button positioning */
-        .navbar-right-button {
-            margin-left: auto;
-            padding-left: 20px;
-        }
-
-        /* Hide contact button on mobile */
-        @media (max-width: 991px) {
-            .navbar-right-button {
-                display: none;
+      .navbar-logo-center-container {
+                background: #fbffd3;
+                box-shadow: 10 2px 10px rgba(0,0,0,0.1);
+                padding: 15px 0;
+                position: relative;
+                z-index: 1000;
+            }
+            
+            /* Container for navbar content with max-width */
+            .container {
+                max-width: 1000px;
+                margin: 0 auto;
+                padding: 0 20px;
             }
 
-            .navbar-content {
+            /* Flex wrapper for navbar elements */
+            .navbar-wrapper {
+                display: flex;
                 justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                position: relative;
             }
-        }
 
-        .nav-menu-three {
-            border-radius: 50px;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 10px;
-            padding: 7px;
-            display: flex;
-            box-shadow: 10 8px 50px #0000000d;
-        }
-
-        .navbar-logo-center-container.shadow-three {
-            background-color: #fbffd3;
-            width: 100%;
-            max-width: 1140px;
-            padding-top: 9px;
-            padding-bottom: 9px;
-        }
-
-        /* iPad Mini/Air 600–900px — prevent nav wrap */
-        @media (min-width: 600px) and (max-width: 900px) {
-            .nav-menu-three {
-                flex-wrap: nowrap !important;
-                gap: 2px !important;
-                padding: 5px !important;
+            /* Centered logo positioning */
+            .navbar-brand {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-60%);
             }
-        }
+            
+            /* Logo container styling */
+            .navbar-brand-three {
+                display: flex;
+                align-items: center;
+                margin-right: 20px; /* Space between logo and nav items */
+            }
 
+            /* Logo image sizing */
+            .navbar-brand img {
+                height: 50px;
+                width: auto;
+            }
+            
+            /* Navigation menu sections (left and right) */
+            .nav-menu-left, .nav-menu-right {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            /* Main navbar content area */
+            .navbar-content {
+                display: flex;
+                align-items: center;
+                flex-grow: 1;
+                justify-content: center;
+            }
+            
+            /* Contact button positioning */
+            .navbar-right-button {
+                margin-left: auto;
+                padding-left: 20px;
+            }
+            
+            /* Hide contact button on mobile */
+            @media (max-width: 991px) {
+                .navbar-right-button {
+                    display: none;
+                }
+                
+                .navbar-content {
+                    justify-content: space-between;
+                }
+            }
+
+            .nav-menu-three {               
+                border-radius: 50px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 10px;
+                padding: 7px;
+                display: flex;
+                box-shadow: 10 8px 50px #0000000d;
+            }
+            .navbar-logo-center-container.shadow-three {
+    background-color: #fbffd3;
+    width: 100%;
+    max-width: 1140px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+            /* Hide contact button on mobile */
+            @media (max-width: 991px) {
+                .navbar-right-button {
+                    display: none;
+                }
+                
+                .navbar-content {
+                    justify-content: space-between;
+                }
+            }
+
+            .nav-menu-three {               
+                border-radius: 50px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 10px;
+                padding: 7px;
+                display: flex;
+                box-shadow: 10 8px 50px #0000000d;
+            }
+            .navbar-logo-center-container.shadow-three {
+    background-color: #fbffd3;
+    width: 100%;
+    max-width: 1140px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+            }
         /* ============================================================
            5. SECTION SPACING
         ============================================================ */
@@ -429,7 +446,7 @@
                 justify-content: space-between;
                 align-items: center;
                 margin-top: 10px;
-                padding: 2px;
+                padding: 7px;
                 display: flex;
                 box-shadow: 0 8px 50px #0000000d;
             }
@@ -462,42 +479,12 @@
         /* ============================================================
            11. RESPONSIVE — iPad Mini/Air 600–900px
         ============================================================ */
-        @media (min-width: 600px) and (max-width: 900px) {
-
-            /* Navbar: prevent 2-line wrap */
-            .nav-menu-three {
-                flex-wrap: nowrap !important;
-                gap: 2px !important;
-                padding: 5px !important;
-            }
-
-            .nav-menu-block {
-                display: flex !important;
-                flex-wrap: nowrap !important;
-                gap: 0px !important;
-                align-items: center;
-            }
-
-            .nav-link,
-            .nav-link-accent {
-                font-size: 11px !important;
-                padding: 6px 7px !important;
-                white-space: nowrap;
-            }
-
-            .nav-dropdown-toggle,
-            .text-block {
-                font-size: 11px !important;
-                white-space: nowrap;
-            }
-
-            .navbar-brand-three img {
-                height: 38px !important;
-                width: auto !important;
-            }
-
-            .padding-section-large-2,
-            .padding-section-medium-2                  { padding-top: 1.5rem; padding-bottom: 0rem; }
+         @media (min-width: 600px) and (max-width: 900px) {
+            .content1_component {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+                text-align: center;
+            }              { padding-top: 1.5rem; padding-bottom: 0rem; }
 
             h2,
             .heading-style-h2,
