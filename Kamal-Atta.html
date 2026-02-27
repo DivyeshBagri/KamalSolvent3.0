@@ -334,17 +334,18 @@
            SECTION 1 — PRODUCT INTRO: Fully responsive two-column layout
            ============================================================ */
         .product-intro-section {
-            padding: 50px 0 40px;
+            padding: 60px 0 50px;
         }
 
         .product-intro-inner {
-            max-width: 1140px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 48px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            gap: 40px;
+            align-items: stretch;
+            min-height: 520px;
         }
 
         /* Text column */
@@ -355,13 +356,13 @@
         }
 
         .product-intro-text h1 {
-            margin: 0 0 16px 0;
+            margin: 0 0 20px 0;
         }
 
         .product-intro-text p {
-            margin: 0 0 16px 0;
+            margin: 0 0 14px 0;
             color: #444;
-            font-size: 1rem;
+            font-size: 0.97rem;
             line-height: 1.75;
         }
 
@@ -369,18 +370,20 @@
             margin-bottom: 0;
         }
 
-        /* Image column — no container box, image floats freely */
+        /* Image column — fills full column height so both sides are equal */
         .product-intro-image-wrap {
             width: 100%;
             display: flex;
-            align-items: center;
+            align-items: stretch;
             justify-content: center;
         }
 
         .product-intro-image-wrap img {
-            width: 80%;             /* slightly inset so it breathes */
-            max-width: 420px;
-            height: auto;
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            min-height: 440px;
+            object-fit: contain;
             display: block;
             border-radius: 16px;
             transition: transform 0.4s ease;
@@ -390,16 +393,16 @@
             transform: scale(1.03);
         }
 
-        /* ── Tablet ≤ 1100px: tighten gap, shrink image slightly ── */
+        /* ── Tablet ≤ 1100px: tighten gap ── */
         @media (max-width: 1100px) {
             .product-intro-inner {
-                gap: 40px;
-                padding: 0 30px;
+                gap: 32px;
+                padding: 0 32px;
+                min-height: 460px;
             }
 
             .product-intro-image-wrap img {
-                width: 85%;
-                max-width: 360px;
+                min-height: 380px;
             }
         }
 
@@ -413,16 +416,22 @@
                 grid-template-columns: 1fr;
                 gap: 28px;
                 padding: 0 24px;
+                min-height: unset;
+                align-items: center;
             }
 
             .product-intro-image-wrap {
                 order: -1;
+                align-items: center;
             }
 
             .product-intro-image-wrap img {
-                width: 60%;
-                max-width: 320px;
+                width: 65%;
+                max-width: 380px;
+                height: auto;
+                min-height: unset;
                 border-radius: 14px;
+                object-fit: contain;
             }
 
             .product-intro-text {
@@ -442,8 +451,8 @@
             }
 
             .product-intro-image-wrap img {
-                width: 65%;
-                max-width: 260px;
+                width: 72%;
+                max-width: 300px;
                 border-radius: 12px;
             }
         }
@@ -460,8 +469,8 @@
             }
 
             .product-intro-image-wrap img {
-                width: 70%;
-                max-width: 220px;
+                width: 80%;
+                max-width: 260px;
                 border-radius: 10px;
             }
 
@@ -505,8 +514,6 @@
 
             .benefits-grid                    { grid-template-columns: repeat(2, 1fr); gap: 20px; }
             .content1_component               { gap: 24px; }
-
-            /* Section 1 responsive handled in dedicated block above */
         }
 
         /* ============================================================
@@ -567,8 +574,6 @@
 
             .section-header p                 { font-size: 0.95rem; }
             .why-choose-section               { padding: 24px 0; }
-
-            /* Section 1 mobile handled above */
         }
 
         /* ============================================================
@@ -603,8 +608,6 @@
                 grid-column-gap: 44px;
                 grid-row-gap: 15px;
             }
-
-            /* Section 1 small mobile handled above */
         }
 
         /* ============================================================
@@ -849,7 +852,7 @@
     <div class="page-wrapper">
         <main class="main-wrapper">
 
-            <!-- ── Section 1: Product Introduction (UPDATED) ── -->
+            <!-- ── Section 1: Product Introduction ── -->
             <section class="product-intro-section" aria-labelledby="page-heading">
                 <div class="product-intro-inner">
 
@@ -859,13 +862,13 @@
                         <p>Dispelling common myths surrounding flour consumption, it's essential to recognize its vital role in maintaining a balanced diet. Choosing the right flour is pivotal, and Shudh Chakki Atta, meticulously ground from premium wheat grains, emerges as a nutritional powerhouse. Crafted with utmost care, this flour preserves the wholesome goodness of wheat, ensuring a nourishing addition to every meal.</p>
                         <p>In essence, Shudh Chakki Atta emerges as a symbol of purity, nutrition, and culinary excellence. With its rich blend of essential nutrients, natural goodness, and versatile applications, it embodies the essence of wholesome living, nurturing health and well-being with every bite.</p>
                         <p>As families gather around the dining table, Shudh Chakki Atta becomes the focal point of culinary creativity and tradition. Its versatility knows no bounds, transforming ordinary meals into extraordinary culinary experiences. From the softness of freshly baked bread to the aroma of golden-brown rotis, every bite is a testament to the timeless appeal of pure, wholesome goodness.</p>
-                  </div>
+                    </div>
 
-                    <!-- Right: Image — fixed height, cropped & fitted -->
+                    <!-- Right: Image — stretches to match text column height -->
                     <div class="product-intro-image-wrap">
                         <img src="KamalAtta/Kamal Atta.png"
                              loading="lazy"
-                             alt="Energy Max Rice Bran Oil by Kamal Solvent Extractions"
+                             alt="Kamal Fortified Chakki Atta by Kamal Solvent Extractions"
                              sizes="(max-width: 767px) 90vw, (max-width: 991px) 90vw, (max-width: 1919px) 50vw, 570px"
                              srcset="KamalAtta/Kamal Atta.png 500w,
                                      KamalAtta/Kamal Atta.png 800w,
@@ -896,10 +899,10 @@
                                 </svg>
                             </div>
                             <h3 class="benefit-title">Dietary Benefits</h3>
-                    <p class="benefit-description">High fiber content promotes digestive health, aids in weight management, and supports steady blood sugar levels. Regular consumption fosters overall well-being, enhancing vitality and immunity.</p>
-                </div>
+                            <p class="benefit-description">High fiber content promotes digestive health, aids in weight management, and supports steady blood sugar levels. Regular consumption fosters overall well-being, enhancing vitality and immunity.</p>
+                        </div>
 
-                <!-- Card 2 -->
+                        <!-- Card 2 -->
                         <div class="benefit-card animate__animated animate__fadeInUp" data-wow-delay="0.1s">
                             <div class="benefit-icon floating">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -909,9 +912,9 @@
                                     <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"></path>
                                 </svg>
                             </div>
-                            <h3 class="benefit-title">Pure & Unadulterated</h3>
-                    <p class="benefit-description">Crafted through traditional stone-grinding techniques to retain wheat's inherent goodness. Free from additives, preservatives, or artificial enhancers for authentic taste and nutrition.</p>
-                </div>
+                            <h3 class="benefit-title">Pure &amp; Unadulterated</h3>
+                            <p class="benefit-description">Crafted through traditional stone-grinding techniques to retain wheat's inherent goodness. Free from additives, preservatives, or artificial enhancers for authentic taste and nutrition.</p>
+                        </div>
 
                         <!-- Card 3 -->
                         <div class="benefit-card animate__animated animate__fadeInUp" data-wow-delay="0.2s">
@@ -923,8 +926,8 @@
                                 </svg>
                             </div>
                             <h3 class="benefit-title">Culinary Versatility</h3>
-                    <p class="benefit-description">From soft rotis to delectable breads and sweets, its fine texture and superior taste elevate every dish. Perfect for both traditional recipes and innovative creations.</p>
-                </div>
+                            <p class="benefit-description">From soft rotis to delectable breads and sweets, its fine texture and superior taste elevate every dish. Perfect for both traditional recipes and innovative creations.</p>
+                        </div>
 
                         <!-- Card 4 -->
                         <div class="benefit-card animate__animated animate__fadeInUp" data-wow-delay="0.3s">
@@ -935,11 +938,10 @@
                                     <line x1="9" y1="9" x2="9.01" y2="9"></line>
                                     <line x1="15" y1="9" x2="15.01" y2="9"></line>
                                 </svg>
+                            </div>
                             <h3 class="benefit-title">Quality Assurance</h3>
-                    <p class="benefit-description">Packaged with utmost care to preserve freshness and quality. Trusted choice in households across the country for its enduring freshness and superior taste.</p>
-                </div>
-
-                      
+                            <p class="benefit-description">Packaged with utmost care to preserve freshness and quality. Trusted choice in households across the country for its enduring freshness and superior taste.</p>
+                        </div>
 
                     </div><!-- /.benefits-grid -->
                 </div><!-- /.container -->
@@ -1023,7 +1025,7 @@
                                             </div>
                                         </div>
                                         <div class="text-size-small-2">
-                                            <a href="https://mail.google.com/mail/?view=cm&to=kse@kamalsol.com" target="_blank" class="nav-dropdown-link"><span class="__cf_email__" data-cfemail="3d564e587d565c505c514e5251135e5250">[email&#160;protected]</span></a>
+                                            <a href="https://mail.google.com/mail/?view=cm&to=kse@kamalsol.com" target="_blank" class="nav-dropdown-link">kse@kamalsol.com</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1101,7 +1103,7 @@
     <!-- ============================================================
          SCRIPTS
          ============================================================ -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6607a6ef83fae9272e214029"
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6607a6ef83fae9272e214029"
             type="text/javascript"
             integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
             crossorigin="anonymous"></script>
@@ -1122,5 +1124,6 @@
     </script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17496040923"></script>
-    <script>
-        
+
+</body>
+</html>
