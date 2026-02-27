@@ -241,9 +241,10 @@
         }
 
         /* ── Benefit Cards ── */
+        /* FIX: Force 2x2 grid on desktop so cards are balanced */
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
 
@@ -332,15 +333,16 @@
 
         /* ============================================================
            SECTION 1 — PRODUCT INTRO: Fully responsive two-column layout
+           FIX: Slightly increased max-width from 1200px to 1205px
            ============================================================ */
         .product-intro-section {
             padding: 60px 0 50px;
         }
 
         .product-intro-inner {
-            max-width: 1200px;
+            max-width: 1205px;     /* FIX: was 1200px, now slightly wider */
             margin: 0 auto;
-            padding: 0 48px;
+            padding: 0 46px;       /* FIX: was 48px, adjusted proportionally */
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
@@ -512,6 +514,7 @@
             h3,
             .benefit-title                    { font-size: 20px !important; }
 
+            /* Keep 2x2 on tablet too until it gets too narrow */
             .benefits-grid                    { grid-template-columns: repeat(2, 1fr); gap: 20px; }
             .content1_component               { gap: 24px; }
         }
@@ -535,7 +538,8 @@
             h3,
             .benefit-title                    { font-size: 20px !important; }
 
-            .benefits-grid                    { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            /* 2 columns still works at 600–900px */
+            .benefits-grid                    { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .footer3_top-wrapper              { grid-template-columns: 1fr !important; }
             .footer3_menu-wrapper             { grid-template-columns: repeat(2, 1fr) !important; }
         }
@@ -563,6 +567,7 @@
             h3,
             .benefit-title                    { font-size: 18px !important; }
 
+            /* Single column on mobile */
             .benefits-grid                    { grid-template-columns: 1fr; gap: 16px; }
             .benefit-card                     { padding: 25px; }
 
