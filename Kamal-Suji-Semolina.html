@@ -9,7 +9,7 @@
 
     <!-- ── SEO: Title & Meta Description ── -->
     <title>Kamal Suji (Semolina) | Pure Premium Semolina | Kamal Solvent Extractions Pvt. Ltd.</title>
-    <meta name="description" content="Kamal Suji (Semolina) is a premium, pure semolina crafted from select wheat grains. Rich in carbohydrates, protein and dietary fibre — free from additives and preservatives. Perfect for upma, halwa, idli, sooji dhokla &amp; more. Buy from Kamal Solvent Extractions Pvt. Ltd., Rajnandgaon, Chhattisgarh."/>
+    <meta name="description" content="Kamal Suji (Semolina) is a premium, pure semolina crafted from select wheat grains. Rich in carbohydrates, protein and dietary fibre — free from additives and preservatives. Perfect for upma, halwa, idli, sooji dhokla & more. Buy from Kamal Solvent Extractions Pvt. Ltd., Rajnandgaon, Chhattisgarh."/>
     <meta name="keywords" content="Kamal Suji, semolina India, pure suji, best semolina India, Kamal Solvents suji, shudh semolina, sooji India, semolina manufacturer Chhattisgarh, premium suji, wheat semolina India, Kamal Solvent Extractions"/>
     <meta name="robots" content="index, follow"/>
     <meta name="author" content="Kamal Solvent Extractions Pvt. Ltd."/>
@@ -35,7 +35,7 @@
 
     <!-- ── External Stylesheets ── -->
     <link href="https://cdn.prod.website-files.com/6607a6ef83fae9272e214029/css/kamal-solvents-f8b61e.webflow.166346515.min.css" rel="stylesheet" type="text/css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet"/>
 
     <!-- ── Favicon ── -->
@@ -411,6 +411,7 @@
             cursor: pointer;
             font-size: 16px;
         }
+     
 
         /* ============================================================
            6. WHY CHOOSE SECTION
@@ -447,9 +448,10 @@
         }
 
         /* ── Benefit Cards ── */
+        /* FIX: Force 2x2 grid on desktop so cards are balanced */
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
 
@@ -509,9 +511,14 @@
             transition: width 0.3s ease;
         }
 
+         
+
         .benefit-card:hover .benefit-title:after { width: 60px; }
 
         .benefit-description { color: #000000; font-size: 1rem; }
+
+        
+
 
         /* ============================================================
            7. ANIMATIONS
@@ -538,19 +545,21 @@
 
         /* ============================================================
            SECTION 1 — PRODUCT INTRO: Fully responsive two-column layout
+           FIX: Slightly increased max-width from 1200px to 1205px
            ============================================================ */
-        .product-intro-section {
-            padding: 50px 0 40px;
-        }
+            .product-intro-section {
+    padding: 20px 0 0px;
+}
 
         .product-intro-inner {
-            max-width: 1140px;
+            max-width: 1205px;     /* FIX: was 1200px, now slightly wider */
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 10px 46px;       /* FIX: was 48px, adjusted proportionally */
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            gap: 40px;
+            align-items: stretch;
+            min-height: 520px;
         }
 
         /* Text column */
@@ -561,13 +570,13 @@
         }
 
         .product-intro-text h1 {
-            margin: 0 0 16px 0;
+            margin: 0 0 20px 0;
         }
 
         .product-intro-text p {
-            margin: 0 0 16px 0;
+            margin: 0 0 14px 0;
             color: #444;
-            font-size: 1rem;
+            font-size: 0.97rem;
             line-height: 1.75;
         }
 
@@ -575,40 +584,39 @@
             margin-bottom: 0;
         }
 
-        /* ── Image column: reserve exact space to prevent layout shift ── */
+        /* Image column — fills full column height so both sides are equal */
         .product-intro-image-wrap {
             width: 100%;
             display: flex;
-            align-items: center;
+            align-items: stretch;
             justify-content: center;
-            /* Reserve space while image loads — prevents CLS */
-            min-height: 340px;
         }
 
-     .product-intro-image-wrap img {
-    width: 80%;
-    max-width: 420px;
-    height: auto;
-    display: block;
-    border-radius: 0;
-    transition: transform 0.4s ease;
-    background: transparent;
-}
+        .product-intro-image-wrap img {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            min-height: 440px;
+            object-fit: contain;
+            display: block;
+            border-radius: 16px;
+            transition: transform 0.4s ease;
+        }
 
         .product-intro-image-wrap:hover img {
             transform: scale(1.03);
         }
 
-        /* ── Tablet ≤ 1100px: tighten gap, shrink image slightly ── */
+        /* ── Tablet ≤ 1100px: tighten gap ── */
         @media (max-width: 1100px) {
             .product-intro-inner {
-                gap: 40px;
-                padding: 0 30px;
+                gap: 32px;
+                padding: 0 32px;
+                min-height: 460px;
             }
 
             .product-intro-image-wrap img {
-                width: 85%;
-                max-width: 360px;
+                min-height: 380px;
             }
         }
 
@@ -621,18 +629,23 @@
             .product-intro-inner {
                 grid-template-columns: 1fr;
                 gap: 28px;
-                padding: 0 24px;
+                padding: 24px 24px;
+                min-height: unset;
+                align-items: center;
             }
 
             .product-intro-image-wrap {
                 order: -1;
-                min-height: 260px;
+                align-items: center;
             }
 
             .product-intro-image-wrap img {
-                width: 60%;
-                max-width: 320px;
+                width: 65%;
+                max-width: 380px;
+                height: auto;
+                min-height: unset;
                 border-radius: 14px;
+                object-fit: contain;
             }
 
             .product-intro-text {
@@ -648,16 +661,12 @@
 
             .product-intro-inner {
                 gap: 20px;
-                padding: 0 16px;
-            }
-
-            .product-intro-image-wrap {
-                min-height: 200px;
+                padding: 10px 16px;
             }
 
             .product-intro-image-wrap img {
-                width: 65%;
-                max-width: 260px;
+                width: 72%;
+                max-width: 300px;
                 border-radius: 12px;
             }
         }
@@ -670,16 +679,12 @@
 
             .product-intro-inner {
                 gap: 16px;
-                padding: 0 12px;
-            }
-
-            .product-intro-image-wrap {
-                min-height: 180px;
+                padding: 12px 12px;
             }
 
             .product-intro-image-wrap img {
-                width: 70%;
-                max-width: 220px;
+                width: 80%;
+                max-width: 260px;
                 border-radius: 10px;
             }
 
@@ -687,6 +692,12 @@
                 font-size: 0.92rem;
             }
         }
+
+                  .gallery-custom-section {
+    padding: 11px 0 11px;
+    background: #fff;
+}
+
 
         /* ============================================================
            RESPONSIVE — Tablet ≤ 991px
@@ -721,8 +732,21 @@
             h3,
             .benefit-title                    { font-size: 20px !important; }
 
+            /* Keep 2x2 on tablet too until it gets too narrow */
             .benefits-grid                    { grid-template-columns: repeat(2, 1fr); gap: 20px; }
             .content1_component               { gap: 24px; }
+
+             @media (max-width: 991px) {
+    .product-intro-section {
+        padding: 0px 0 0px;
+    }
+}
+
+             @media (max-width: 991px) {
+    .gallery-custom-section {
+        padding: 10px 0 19px;
+    }
+}
         }
 
         /* ============================================================
@@ -744,7 +768,8 @@
             h3,
             .benefit-title                    { font-size: 20px !important; }
 
-            .benefits-grid                    { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            /* 2 columns still works at 600–900px */
+            .benefits-grid                    { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .footer3_top-wrapper              { grid-template-columns: 1fr !important; }
             .footer3_menu-wrapper             { grid-template-columns: repeat(2, 1fr) !important; }
         }
@@ -772,6 +797,7 @@
             h3,
             .benefit-title                    { font-size: 18px !important; }
 
+            /* Single column on mobile */
             .benefits-grid                    { grid-template-columns: 1fr; gap: 16px; }
             .benefit-card                     { padding: 25px; }
 
@@ -817,6 +843,18 @@
                 grid-column-gap: 44px;
                 grid-row-gap: 15px;
             }
+
+             @media (max-width: 479px) {
+    .product-intro-section {
+        padding: 0px 0 4px;
+    }
+}
+
+             @media (max-width: 479px) {
+    .gallery-custom-section {
+        padding: 0px 0 15px;
+    }
+}
         }
 
         /* ============================================================
@@ -910,6 +948,13 @@
             .gallery-custom-grid           { grid-template-columns: 1fr; gap: 14px; }
             .gallery-custom-item           { height: 360px; }
         }
+
+          .why-choose-section {
+    padding: 12px 0;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+}
     </style>
 
     <!-- ── Webflow JS init ── -->
@@ -927,7 +972,7 @@
      ============================================================ -->
 <body>
 
-     <!-- ============================================================
+    <!-- ============================================================
          NAVIGATION
          ============================================================ -->
     <div class="navbar-logo-center">
@@ -1000,7 +1045,7 @@
                                                     </div>
                                                 </a>
 
-                                                <a href="https://mail.google.com/mail/?view=cm&amp;to=kse@kamalsol.com" target="_blank" class="nav-dropdown-link w-dropdown-link">
+                                                <a href="https://mail.google.com/mail/?view=cm&to=kse@kamalsol.com" target="_blank" class="nav-dropdown-link w-dropdown-link">
                                                     <div class="social-icon-wrapper">
                                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.00977 5.83789C3.00977 5.28561 3.45748 4.83789 4.00977 4.83789H20C20.5523 4.83789 21 5.28561 21 5.83789V17.1621C21 18.2667 20.1046 19.1621 19 19.1621H5C3.89543 19.1621 3 18.2667 3 17.1621V6.16211C3 6.11449 3.00333 6.06765 3.00977 6.0218V5.83789ZM5 8.06165V17.1621H19V8.06199L14.1215 12.9405C12.9499 14.1121 11.0504 14.1121 9.87885 12.9405L5 8.06165ZM6.57232 6.80554H17.428L12.7073 11.5263C12.3168 11.9168 11.6836 11.9168 11.2931 11.5263L6.57232 6.80554Z" fill="currentColor"/></svg>
                                                         Email Us
@@ -1074,20 +1119,20 @@
                         </div>
 
                     <!-- Right: Image — stretches to match text column height -->
-                    <!-- ✅ FIX: Encoded spaces as %20 in srcset (filename "Kamal Suji.png" has a space) -->
                     <div class="product-intro-image-wrap">
-                        <img src="Suji/KamalSuji.png"
+                        <img src="Suji/Kamal Suji.png"
                               fetchpriority="high"
                               decoding="async"
                                alt="Kamal Suji (Semolina) — premium pure semolina crafted from select wheat grains by Kamal Solvent Extractions Pvt. Ltd., Rajnandgaon, Chhattisgarh"
+                            
                              width="570"
                              height="440"
                              itemprop="image"
                              sizes="(max-width: 767px) 90vw, (max-width: 991px) 90vw, (max-width: 1919px) 50vw, 570px"
-                             srcset="Suji/KamalSuji.png 500w,
-                                     Suji/KamalSuji.png 800w,
-                                     Suji/KamalSuji.png 1080w,
-                                     Suji/KamalSuji.png 1082w"/>
+                             srcset="Suji/Kamal Suji.png 500w,
+                                     Suji/Kamal Suji.png 800w,
+                                     Suji/Kamal Suji.png 1080w,
+                                     Suji/Kamal Suji.png 1082w"/>
                     </div>
 
                 </div>
@@ -1126,7 +1171,7 @@
                                     <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"></path>
                                 </svg>
                             </div>
-                             <h3 class="benefit-title">Pure &amp; Unadulterated</h3>
+                             <h3 class="benefit-title">Pure & Unadulterated</h3>
                     <p class="benefit-description">Crafted with utmost care to retain wheat's natural goodness. Free from additives, preservatives, or artificial enhancers for authentic taste and maximum nutrition.</p>
                 </div>
 
@@ -1167,7 +1212,6 @@
 
                 <div class="gallery-custom-grid">
 
-                    <!-- Gallery image 1: KamalSuji1.png — no spaces, already valid -->
                     <div class="gallery-custom-item">
                         <img src="Suji/KamalSuji1.png"
                              loading="lazy"
@@ -1181,7 +1225,6 @@
                                      Suji/KamalSuji1.png 3871w"/>
                     </div>
 
-                    <!-- ✅ FIX: Encoded space as %20 in srcset (filename "Kamal Suji2.png" has a space) -->
                     <div class="gallery-custom-item">
                         <img src="Suji/Kamal Suji2.png"
                              loading="lazy"
@@ -1189,12 +1232,11 @@
                              width="360"
                              height="380"
                              sizes="(max-width: 479px) 90vw, (max-width: 767px) 45vw, (max-width: 991px) 45vw, 360px"
-                             srcset="Suji/Kamal%20Suji2.png 500w,
-                                     Suji/Kamal%20Suji2.png 800w,
-                                     Suji/Kamal%20Suji2.png 853w"/>
+                             srcset="Suji/Kamal Suji2.png 500w,
+                                     Suji/Kamal Suji2.png 800w,
+                                     Suji/Kamal Suji2.png 853w"/>
                     </div>
 
-                    <!-- ✅ FIX: Encoded space as %20 in srcset (filename "Kamal Suji3.png" has a space) -->
                     <div class="gallery-custom-item">
                         <img src="Suji/Kamal Suji3.png"
                              loading="lazy"
@@ -1202,10 +1244,10 @@
                              width="360"
                              height="380"
                              sizes="(max-width: 479px) 90vw, (max-width: 767px) 45vw, (max-width: 991px) 45vw, 360px"
-                             srcset="Suji/Kamal%20Suji3.png 500w,
-                                     Suji/Kamal%20Suji3.png 800w,
-                                     Suji/Kamal%20Suji3.png 1080w,
-                                     Suji/Kamal%20Suji3.png 1600w"/>
+                             srcset="Suji/Kamal Suji3.png 500w,
+                                     Suji/Kamal Suji3.png 800w,
+                                     Suji/Kamal Suji3.png 1080w,
+                                     Suji/Kamal Suji3.png"/>
                     </div>
 
                 </div>
@@ -1245,7 +1287,7 @@
                                             </div>
                                         </div>
                                         <div class="text-size-small-2">
-                                            <a href="https://mail.google.com/mail/?view=cm&amp;to=kse@kamalsol.com" target="_blank" class="nav-dropdown-link" itemprop="email" rel="noopener noreferrer">kse@kamalsol.com</a>
+                                            <a href="https://mail.google.com/mail/?view=cm&to=kse@kamalsol.com" target="_blank" class="nav-dropdown-link" itemprop="email" rel="noopener noreferrer">kse@kamalsol.com</a>
                                         </div>
                                     </div>
                                 </div>
