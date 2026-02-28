@@ -369,22 +369,25 @@
             margin-bottom: 0;
         }
 
-        /* Image column — no container box, image floats freely */
+        /* ── Image column: reserve exact space to prevent layout shift ── */
         .product-intro-image-wrap {
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
+            /* Reserve space while image loads — prevents CLS */
+            min-height: 340px;
         }
 
-        .product-intro-image-wrap img {
-            width: 80%;             /* slightly inset so it breathes */
-            max-width: 420px;
-            height: auto;
-            display: block;
-            border-radius: 16px;
-            transition: transform 0.4s ease;
-        }
+     .product-intro-image-wrap img {
+    width: 80%;
+    max-width: 420px;
+    height: auto;
+    display: block;
+    border-radius: 0;
+    transition: transform 0.4s ease;
+    background: transparent;
+}
 
         .product-intro-image-wrap:hover img {
             transform: scale(1.03);
@@ -417,6 +420,7 @@
 
             .product-intro-image-wrap {
                 order: -1;
+                min-height: 260px;
             }
 
             .product-intro-image-wrap img {
@@ -441,6 +445,10 @@
                 padding: 0 16px;
             }
 
+            .product-intro-image-wrap {
+                min-height: 200px;
+            }
+
             .product-intro-image-wrap img {
                 width: 65%;
                 max-width: 260px;
@@ -457,6 +465,10 @@
             .product-intro-inner {
                 gap: 16px;
                 padding: 0 12px;
+            }
+
+            .product-intro-image-wrap {
+                min-height: 180px;
             }
 
             .product-intro-image-wrap img {
@@ -505,8 +517,6 @@
 
             .benefits-grid                    { grid-template-columns: repeat(2, 1fr); gap: 20px; }
             .content1_component               { gap: 24px; }
-
-            /* Section 1 responsive handled in dedicated block above */
         }
 
         /* ============================================================
@@ -567,8 +577,6 @@
 
             .section-header p                 { font-size: 0.95rem; }
             .why-choose-section               { padding: 24px 0; }
-
-            /* Section 1 mobile handled above */
         }
 
         /* ============================================================
@@ -603,8 +611,6 @@
                 grid-column-gap: 44px;
                 grid-row-gap: 15px;
             }
-
-            /* Section 1 small mobile handled above */
         }
 
         /* ============================================================
@@ -1140,4 +1146,3 @@
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17496040923"></script>
     <script>
-        
