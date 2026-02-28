@@ -30,6 +30,9 @@
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="Webflow" name="generator"/>
 
+    <!-- ── PRELOAD the hero/LCP image so browser fetches it immediately ── -->
+    <link rel="preload" as="image" href="Maida/Maida.png" fetchpriority="high"/>
+
     <!-- ── External Stylesheets ── -->
     <link href="https://cdn.prod.website-files.com/6607a6ef83fae9272e214029/css/kamal-solvents-f8b61e.webflow.166346515.min.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -530,21 +533,25 @@
             margin-bottom: 0;
         }
 
-        /* Image column — no container box, image floats freely */
+        /* ── Image column: reserve exact space to prevent layout shift ── */
         .product-intro-image-wrap {
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
+            /* Reserve space while image loads — prevents CLS */
+            min-height: 340px;
         }
 
         .product-intro-image-wrap img {
-            width: 80%;             /* slightly inset so it breathes */
+            width: 80%;
             max-width: 420px;
             height: auto;
             display: block;
             border-radius: 16px;
             transition: transform 0.4s ease;
+            /* Prevent invisible broken-image box */
+            background: #f5f5ee;
         }
 
         .product-intro-image-wrap:hover img {
@@ -578,6 +585,7 @@
 
             .product-intro-image-wrap {
                 order: -1;
+                min-height: 260px;
             }
 
             .product-intro-image-wrap img {
@@ -602,6 +610,10 @@
                 padding: 0 16px;
             }
 
+            .product-intro-image-wrap {
+                min-height: 200px;
+            }
+
             .product-intro-image-wrap img {
                 width: 65%;
                 max-width: 260px;
@@ -618,6 +630,10 @@
             .product-intro-inner {
                 gap: 16px;
                 padding: 0 12px;
+            }
+
+            .product-intro-image-wrap {
+                min-height: 180px;
             }
 
             .product-intro-image-wrap img {
@@ -666,8 +682,6 @@
 
             .benefits-grid                    { grid-template-columns: repeat(2, 1fr); gap: 20px; }
             .content1_component               { gap: 24px; }
-
-            /* Section 1 responsive handled in dedicated block above */
         }
 
         /* ============================================================
@@ -728,8 +742,6 @@
 
             .section-header p                 { font-size: 0.95rem; }
             .why-choose-section               { padding: 24px 0; }
-
-            /* Section 1 mobile handled above */
         }
 
         /* ============================================================
@@ -764,8 +776,6 @@
                 grid-column-gap: 44px;
                 grid-row-gap: 15px;
             }
-
-            /* Section 1 small mobile handled above */
         }
 
         /* ============================================================
@@ -1010,40 +1020,47 @@
     <div class="page-wrapper">
         <main class="main-wrapper">
 
-            <!-- ── Section 1: Product Introduction (UPDATED) ── -->
+            <!-- ── Section 1: Product Introduction ── -->
             <section class="product-intro-section" aria-labelledby="page-heading">
                 <div class="product-intro-inner">
 
                     <!-- Left: Text content — vertically centered -->
                     <div class="product-intro-text">
                         <h1 id="page-heading" class="heading-style-h2">Kamal Maida</h1>
-                         <p>In the realm of culinary arts, the choice of flour is paramount. Among the diverse options available, Shudh Maida stands out as a testament to culinary excellence, meticulously crafted from the finest wheat grains. Its transformation from grain to flour symbolizes purity and precision, ensuring an enriching addition to every recipe.</p>
+                        <p>In the realm of culinary arts, the choice of flour is paramount. Among the diverse options available, Shudh Maida stands out as a testament to culinary excellence, meticulously crafted from the finest wheat grains. Its transformation from grain to flour symbolizes purity and precision, ensuring an enriching addition to every recipe.</p>
                         <p>In essence, Shudh Maida embodies the essence of wholesome nutrition and culinary delight. With its impeccable blend of essential nutrients, purity, and versatility, it serves as a cornerstone of healthy living, nurturing well-being and vitality with every serving.</p>
                     </div>
 
-                    <!-- Right: Image — fixed height, cropped & fitted -->
+                    <!-- Right: Image — FIXED for fast loading -->
+                    <!--
+                        KEY FIXES applied here:
+                        1. Removed broken srcset (same URL repeated with different w values — confuses browser)
+                        2. Removed decoding="async" — conflicts with fetchpriority="high" on LCP images
+                        3. Added explicit width/height to prevent layout shift (CLS)
+                        4. Added loading="eager" to ensure browser doesn't defer this critical image
+                        5. Simple src-only approach — browser fetches one file immediately
+                        6. Added background colour so container is visible while image loads
+                    -->
                     <div class="product-intro-image-wrap">
-                          <img src="Maida/Maida.png"
-                              fetchpriority="high"
-                              decoding="async"
-                             alt="Kamal Shudh Maida – premium refined wheat flour by Kamal Solvent Extractions, Rajnandgaon"
-                             sizes="(max-width: 767px) 90vw, (max-width: 991px) 90vw, (max-width: 1919px) 50vw, 570px"
-                             srcset="Maida/Maida.png 500w,
-                                     Maida/Maida.png 800w,
-                                     Maida/Maida.png 1080w,
-                                     Maida/Maida.png 1082w"/>
+                        <img src="Maida/Maida.png"
+                             width="420"
+                             height="420"
+                             fetchpriority="high"
+                             loading="eager"
+                             decoding="sync"
+                             alt="Kamal Shudh Maida – premium refined wheat flour by Kamal Solvent Extractions, Rajnandgaon"/>
                     </div>
 
                 </div>
             </section>
 
-            <!-- ── Section 2: Why Choose Rice Bran Oil ── -->
+            <!-- ── Section 2: Why Choose Kamal Shudh Maida ── -->
             <section class="why-choose-section" aria-labelledby="why-heading">
                 <div class="container">
 
                     <div class="section-header animate__animated animate__fadeIn">
                         <h2 id="why-heading">Why Choose Kamal Shudh Maida?</h2>
-                       <p>Exceptional quality refined flour that elevates all your culinary creations</p>
+                        <p>Exceptional quality refined flour that elevates all your culinary creations</p>
                     </div>
 
                     <div class="benefits-grid">
@@ -1071,24 +1088,23 @@
                                     <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                 </svg>
                             </div>
-                                <h3 class="benefit-title">Consistent Quality</h3>
-                                <p class="benefit-description">Packaged with utmost care to guarantee consistent quality and freshness. Trusted by chefs and home cooks across India for reliable results every time.</p>
+                            <h3 class="benefit-title">Consistent Quality</h3>
+                            <p class="benefit-description">Packaged with utmost care to guarantee consistent quality and freshness. Trusted by chefs and home cooks across India for reliable results every time.</p>
                         </div>
 
                         <!-- Card 3 -->
                         <div class="benefit-card animate__animated animate__fadeInUp" data-wow-delay="0.3s">
                             <div class="benefit-icon floating" style="animation-delay: 0.5s;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                   <path d="M7 20h10"></path>
+                                    <path d="M7 20h10"></path>
                                     <path d="M10 20c5.5-2.5.8-6.4 3-10"></path>
                                     <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"></path>
                                     <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"></path>
                                 </svg>
                             </div>
-                                <h3 class="benefit-title">Nutritional Balance</h3>
-                                <p class="benefit-description">Provides essential carbohydrates and proteins for a balanced diet. Perfect for occasional treats and everyday cooking when consumed in moderation.</p>
+                            <h3 class="benefit-title">Nutritional Balance</h3>
+                            <p class="benefit-description">Provides essential carbohydrates and proteins for a balanced diet. Perfect for occasional treats and everyday cooking when consumed in moderation.</p>
                         </div>
-                        
 
                     </div><!-- /.benefits-grid -->
                 </div><!-- /.container -->
@@ -1106,37 +1122,26 @@
                     <div class="gallery-custom-item">
                         <img src="Maida/Kamal%20Maida1.png"
                              loading="lazy"
-                             alt="Kamal Shudh Maida packaging – premium refined wheat flour by Kamal Solvent Extractions"
-                             sizes="(max-width: 479px) 90vw, (max-width: 767px) 45vw, (max-width: 991px) 45vw, 360px"
-                             srcset="Maida/Kamal%20Maida1.png 500w,
-                                     Maida/Kamal%20Maida1.png 800w,
-                                     Maida/Kamal%20Maida1.png 1080w,
-                                     Maida/Kamal%20Maida1.png 3871w"/>
+                             width="360" height="380"
+                             alt="Kamal Shudh Maida packaging – premium refined wheat flour by Kamal Solvent Extractions"/>
                     </div>
 
                     <div class="gallery-custom-item">
                         <img src="Maida/Kamal%20Maida2.png"
                              loading="lazy"
-                             alt="Kamal Maida bag – refined all-purpose flour from Kamal Solvents, Chhattisgarh"
-                             sizes="(max-width: 479px) 90vw, (max-width: 767px) 45vw, (max-width: 991px) 45vw, 360px"
-                             srcset="Maida/Kamal%20Maida2.png 500w,
-                                     Maida/Kamal%20Maida2.png 800w,
-                                     Maida/Kamal%20Maida2.png 853w"/>
+                             width="360" height="380"
+                             alt="Kamal Maida bag – refined all-purpose flour from Kamal Solvents, Chhattisgarh"/>
                     </div>
 
                     <div class="gallery-custom-item">
                         <img src="Maida/Kamal%20Maida3.png"
                              loading="lazy"
-                             alt="Kamal Shudh Maida product display – best maida brand in India"
-                             sizes="(max-width: 479px) 90vw, (max-width: 767px) 45vw, (max-width: 991px) 45vw, 360px"
-                             srcset="Maida/Kamal%20Maida3.png 500w,
-                                     Maida/Kamal%20Maida3.png 800w,
-                                     Maida/Kamal%20Maida3.png 1080w,
-                                     Maida/Kamal%20Maida3.png 2146w"/>
+                             width="360" height="380"
+                             alt="Kamal Shudh Maida product display – best maida brand in India"/>
                     </div>
 
                 </div>
-            </section> 
+            </section>
 
         </main>
     </div>
