@@ -329,29 +329,45 @@
 
   <style>
 
-    body,
-    h1, h2, h3, h4, h5, h6,
-    p, a, span, div,
-    .heading-style-h2,
-    .heading-style-h5 {
-      font-family: 'Poppins', sans-serif !important;
-    }
+       /* ============================================================
+           1. GLOBAL / BASE
+        ============================================================ */
+        body,
+        body *:not(script):not(style):not(link):not(meta) {
+            font-family: 'Poppins', sans-serif !important;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
 
-    h1, h2, h3,
-    .heading-style-h2,
-    .heading-style-h5 {
-      font-size: 41px !important;
-      font-weight: 600 !important;
-    }
+        /* ============================================================
+           2. TYPOGRAPHY — Base (desktop ≥ 901px)
+        ============================================================ */
+        h1, h2,
+        .heading-style-h2,
+        .heading-style-h3,
+        .heading-8,
+        .heading-10,
+        .column-heading,
+        .logo2_component h2 {
+            font-size: 32px !important;
+            font-weight: 700 !important;
+            line-height: 1.2;
+        }
 
-    @media (max-width: 767px) {
-      h1, h2, h3,
-      .heading-style-h2,
-      .heading-style-h5 {
-        font-size: 28px !important;
-      }
-    }
+        .heading-kamal { font-weight: 500 !important; }
 
+        h3,
+        .heading-style-h4 {
+            font-size: 24px !important;
+            font-weight: 700 !important;
+            line-height: 1.2;
+        }
+
+        h1.column-heading {
+            text-align: center !important;
+        }
     .navbar-logo-center-container {
                 background: #fbffd3;
                 box-shadow: 10 2px 10px rgba(0,0,0,0.1);
