@@ -135,7 +135,7 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 10px;
-            padding: 7px;
+            padding: 0px;
             display: flex;
             box-shadow: 10 8px 50px #0000000d;
         }
@@ -1150,6 +1150,159 @@
             .brand-card-text p        { font-size: 12.5px !important; }
         }
 
+
+        /* ============================================================
+           RESPONSIVE ADDITIONS — NEW SECTIONS
+           Sections: header19 (About), section_logo3 (Client Slider),
+                     section_logo2 (Certifications), section_layout32
+                     (Rice Bran Oil Features), section_gallery5 (Gallery),
+                     section_contact2 (Contact)
+           Breakpoints match By-Products pattern:
+             ≤ 991px | 600–900px | ≤ 767px | ≤ 479px
+           ============================================================ */
+
+        /* ============================================================
+           TABLET ≤ 991px
+           ============================================================ */
+        @media (max-width: 991px) {
+
+            /* --- About section --- */
+            .header19_component                       { grid-template-columns: 1fr !important; gap: 32px; }
+            .header19_image-wrapper                   { order: -1; }
+            .header19_image                           { width: 100%; height: auto; }
+            .header19_content h1                      { font-size: 32px !important; }
+
+            /* --- Client logo slider heading --- */
+            .section_logo3 .heading-style-h4          { font-size: 22px !important; text-align: center; }
+
+            /* --- Certifications --- */
+            .logo2_logo-list                          { gap: 8px; margin-top: -10px; }
+            .logo2_wrapper                            { margin: 10px; padding: 12px; }
+            .heading-style-h5                         { font-size: 26px !important; white-space: normal !important; }
+
+            /* --- Rice Bran Oil features --- */
+            .layout32_component                       { grid-template-columns: 1fr !important; gap: 32px; }
+            .layout32_image-wrapper                   { order: -1; }
+            .layout32_image                           { width: 100%; height: auto; }
+            .heading-style-h1.coloured                { font-size: 30px !important; }
+
+            /* --- Gallery --- */
+            .gallery5_component                       { gap: 12px !important; }
+            .gallery5_row                             { gap: 12px !important; }
+            .gallery5_image-wrapper                   { border-radius: 8px; overflow: hidden; }
+            .section_gallery5 .heading-style-h2       { font-size: 28px !important; }
+
+            /* --- Contact section --- */
+            .section_contact2 .heading-style-h2       { font-size: 28px !important; }
+
+            .nav-menu-three {
+                background-color: #fff;
+                border-radius: 51px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 10px;
+                padding: 0px;
+                display: flex;
+                box-shadow: 0 8px 50px #0000000d;
+            }
+        }
+
+
+        /* ============================================================
+           iPad Mini/Air 600–900px
+           ============================================================ */
+        @media (min-width: 600px) and (max-width: 900px) {
+
+            /* --- About --- */
+            .header19_content h1                      { font-size: 30px !important; }
+            .header19_component                       { gap: 28px; }
+
+            /* --- Certifications --- */
+            .logo2_logo-list                          { gap: 6px; }
+            .haccp-logo img, .iso-logo img,
+            .fssai-logo img, .apeda-logo img,
+            .food-safety-logo img                     { width: 110px !important; }
+
+            /* --- Rice Bran Oil features --- */
+            .layout32_component                       { gap: 28px; }
+        }
+
+
+        /* ============================================================
+           MOBILE ≤ 767px
+           ============================================================ */
+        @media (max-width: 767px) {
+
+            /* --- About section --- */
+            .header19_content h1                      { font-size: 26px !important; }
+            .header19_content .text-size-medium       { font-size: 14px !important; }
+            .header19_component                       { gap: 24px; }
+
+            /* --- Client logo slider heading --- */
+            .section_logo3 .heading-style-h4          { font-size: 18px !important; padding: 0 16px; }
+
+            /* --- Certifications heading --- */
+            .section_logo2 h1                         { font-size: 22px !important; text-align: center; }
+            .logo2_content-left                       { margin-bottom: 24px; }
+            .logo2_logo-list                          { flex-wrap: wrap; gap: 4px; margin-top: -8px; }
+            .logo2_wrapper                            { margin: 8px; padding: 10px; }
+
+            /* --- Rice Bran Oil features --- */
+            .heading-style-h1.coloured                { font-size: 22px !important; }
+            .layout32_component                       { gap: 20px; }
+            .layout32_item                            { gap: 12px !important; }
+            .layout32_item-icon-wrapper img           { width: 40px !important; }
+            .feature-heading                          { font-size: 15px !important; }
+            .feature-text                             { font-size: 13px !important; }
+
+            /* --- Gallery --- */
+            .section_gallery5 .heading-style-h2       { font-size: 22px !important; }
+            .section_gallery5 .text-size-medium-5     { font-size: 12px !important; letter-spacing: 1.5px; }
+            .gallery5_row                             { grid-template-columns: 1fr 1fr 1fr !important; gap: 8px !important; }
+            .gallery5_image                           { width: 100%; height: auto; }
+
+            /* --- Contact --- */
+            .section_contact2 .heading-style-h2       { font-size: 22px !important; }
+            .section_contact2 .text-size-medium       { font-size: 14px !important; }
+        }
+
+
+        /* ============================================================
+           SMALL MOBILE ≤ 479px
+           ============================================================ */
+        @media (max-width: 479px) {
+
+            /* --- About section --- */
+            .header19_content h1                      { font-size: 22px !important; }
+            .header19_content .text-size-medium       { font-size: 13px !important; }
+
+            /* --- Client logo slider heading --- */
+            .section_logo3 .heading-style-h4          { font-size: 16px !important; }
+
+            /* --- Certifications --- */
+            .section_logo2 h1                         { font-size: 18px !important; }
+            .logo2_logo-list                          { gap: 0px; }
+            .logo2_wrapper                            { margin: 6px; padding: 8px; }
+            .haccp-logo img, .iso-logo img,
+            .fssai-logo img, .apeda-logo img,
+            .food-safety-logo img                     { width: 80px !important; }
+
+            /* --- Rice Bran Oil features --- */
+            .heading-style-h1.coloured                { font-size: 19px !important; }
+            .feature-heading                          { font-size: 14px !important; }
+            .feature-text                             { font-size: 12px !important; }
+            .layout32_item-icon-wrapper img           { width: 36px !important; }
+
+            /* --- Gallery --- */
+            .section_gallery5 .heading-style-h2       { font-size: 19px !important; }
+            .gallery5_row                             { grid-template-columns: 1fr 1fr 1fr !important; gap: 6px !important; }
+
+            /* --- Contact --- */
+            .section_contact2 .heading-style-h2       { font-size: 19px !important; }
+            .section_contact2 .text-size-medium       { font-size: 13px !important; }
+        }
+
     </style>
 
     <script>
@@ -1183,7 +1336,7 @@
 
                         <!-- Logo -->
                         <a href="/" aria-current="page" class="navbar-brand-three w-nav-brand w--current">
-                            <img src="https://raw.githubusercontent.com/DivyeshBagri/test/main/Kamal%20English_PNG.png"
+                            <img src="Kamal English_PNG.png"
                                  loading="lazy" width="90" alt="Kamal Solvents Logo"/>
                         </a>
 
@@ -1341,19 +1494,19 @@
 
                 <!-- Slide 1 -->
                 <div class="swiper-slide" data-swiper-autoplay="3000">
-                    <img src="https://raw.githubusercontent.com/DivyeshBagri/test/main/Slider/2.jpg" alt="Slide 1"/>
+                    <img src="Slider/2.jpg" alt="Slide 1"/>
                 </div>
 
                 <!-- Slide 2 -->
                 <div class="swiper-slide" data-swiper-autoplay="3000">
-                    <img src="https://raw.githubusercontent.com/DivyeshBagri/test/main/Slider/Slid2.jpg" alt="Slide 2"/>
+                    <img src="Slider/Slid2.jpg" alt="Slide 2"/>
                 </div>
 
                 <!-- Slide 3 – Video -->
                 <div class="swiper-slide" data-swiper-autoplay="37000">
                     <div class="video-container">
                         <video autoplay muted playsinline loop>
-                            <source src="https://raw.githubusercontent.com/DivyeshBagri/test/main/Slider/slider%20video%20kamal%20oil%20%26%20food%2002%20(1)%20(1).mp4" type="video/mp4"/>
+                            <source src="Slider/slider video kamal oil & food 02 (1) (1).mp4" type="video/mp4"/>
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -1386,7 +1539,7 @@
                     <div class="logo-slider-track">
 
                         <!-- Original set -->
-                        <div class="logo-slider-item akshaya"><img src="https://raw.githubusercontent.com/DivyeshBagri/test/main/Retail/Akshaya-Patra-LOGO-510x244.jpg" alt="Akshaya Patra"/></div>
+                        <div class="logo-slider-item akshaya"><img src="Retail/Akshaya-Patra-LOGO-510x244.jpg" alt="Akshaya Patra"/></div>
                         <div class="logo-slider-item cargil"><img src="https://raw.githubusercontent.com/DivyeshBagri/test/main/Retail/cargil.png" alt="Cargil"/></div>
                         <div class="logo-slider-item reliance"><img src="https://raw.githubusercontent.com/DivyeshBagri/test/main/Retail/RelianceSmart.png" alt="Reliance Smart"/></div>
                         <div class="logo-slider-item dmart"><img src="https://raw.githubusercontent.com/DivyeshBagri/test/main/Retail/Dmart.png" alt="D-Mart"/></div>
@@ -1923,7 +2076,7 @@
                             <div class="footer3_left-wrapper">
                                 <div class="margin-bottom margin-medium">
                                     <a href="#" class="footer3_logo-link">
-                                        <img src="https://raw.githubusercontent.com/DivyeshBagri/test/main/Kamal%20English_PNG.png" loading="lazy" width="91" alt="Kamal Solvents Logo"/>
+                                        <img src="Kamal English_PNG.png" loading="lazy" width="91" alt="Kamal Solvents Logo"/>
                                     </a>
                                 </div>
                                 <div class="margin-bottom margin-medium">
