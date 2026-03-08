@@ -607,6 +607,104 @@
 
 
         /* ============================================================
+           PHONE INPUT WITH COUNTRY CODE
+           ============================================================ */
+        .phone-input-wrapper {
+            display: flex;
+            align-items: stretch;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .phone-input-wrapper:focus-within {
+            border-color: #4d65ff;
+        }
+
+        .phone-input-wrapper.error {
+            border-color: #e74c3c !important;
+        }
+
+        .country-code-selector {
+            display: flex;
+            align-items: center;
+            background: #f8f8f8;
+            border-right: 1px solid #ddd;
+            padding: 0 10px;
+            position: relative;
+            cursor: pointer;
+            min-width: 95px;
+            gap: 5px;
+            flex-shrink: 0;
+        }
+
+        .flag-img {
+            width: 20px;
+            height: 14px;
+            object-fit: cover;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .country-code-selector select {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            border: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .dropdown-arrow {
+            font-size: 11px;
+            color: #888;
+            pointer-events: none;
+            flex-shrink: 0;
+        }
+
+        #countryCodeDisplay {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .phone-number-input {
+            flex: 1;
+            border: none !important;
+            margin-bottom: 0 !important;
+            border-radius: 0 !important;
+            padding: 12px !important;
+            min-width: 0;
+            box-sizing: border-box;
+        }
+
+        .phone-number-input:focus {
+            outline: none;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Override the general tel input style so it doesn't double-border */
+        .simple-form-container input[type="tel"].phone-number-input {
+            border: none !important;
+            margin-bottom: 0 !important;
+            width: 100%;
+        }
+
+        @media (max-width: 767px) {
+            .country-code-selector { min-width: 80px; padding: 0 8px; }
+            #countryCodeDisplay    { font-size: 12px; }
+        }
+
+
+        /* ============================================================
            FOOTER STYLES
            ============================================================ */
         @media screen and (max-width: 767px) {
@@ -2112,8 +2210,79 @@
                                 <input type="email" id="email" name="email" class="item" required/>
 
                                 <label for="phone">Phone Number:</label>
-                                <input type="tel" id="phone" name="phone" class="item" pattern="[0-9]{10}" title="Please enter a 10-digit phone number"/>
-                                <span class="error-message" id="phoneError" style="display:none;">Please enter a valid 10-digit phone number</span>
+                                <div class="phone-input-wrapper">
+                                    <div class="country-code-selector">
+                                        <img id="selectedFlag" src="https://flagcdn.com/w20/in.png" alt="IN" class="flag-img"/>
+                                        <span id="countryCodeDisplay">+91</span>
+                                        <span class="dropdown-arrow">▾</span>
+                                        <select id="countryCode" name="country_code">
+                                            <option value="+91"  data-flag="in"  data-digits="10" selected>🇮🇳 +91 (India)</option>
+                                            <option value="+1"   data-flag="us"  data-digits="10">🇺🇸 +1 (USA)</option>
+                                            <option value="+1"   data-flag="ca"  data-digits="10">🇨🇦 +1 (Canada)</option>
+                                            <option value="+44"  data-flag="gb"  data-digits="10">🇬🇧 +44 (UK)</option>
+                                            <option value="+61"  data-flag="au"  data-digits="9" >🇦🇺 +61 (Australia)</option>
+                                            <option value="+971" data-flag="ae"  data-digits="9" >🇦🇪 +971 (UAE)</option>
+                                            <option value="+966" data-flag="sa"  data-digits="9" >🇸🇦 +966 (Saudi Arabia)</option>
+                                            <option value="+65"  data-flag="sg"  data-digits="8" >🇸🇬 +65 (Singapore)</option>
+                                            <option value="+60"  data-flag="my"  data-digits="9" >🇲🇾 +60 (Malaysia)</option>
+                                            <option value="+49"  data-flag="de"  data-digits="10">🇩🇪 +49 (Germany)</option>
+                                            <option value="+33"  data-flag="fr"  data-digits="9" >🇫🇷 +33 (France)</option>
+                                            <option value="+39"  data-flag="it"  data-digits="10">🇮🇹 +39 (Italy)</option>
+                                            <option value="+34"  data-flag="es"  data-digits="9" >🇪🇸 +34 (Spain)</option>
+                                            <option value="+31"  data-flag="nl"  data-digits="9" >🇳🇱 +31 (Netherlands)</option>
+                                            <option value="+81"  data-flag="jp"  data-digits="10">🇯🇵 +81 (Japan)</option>
+                                            <option value="+82"  data-flag="kr"  data-digits="10">🇰🇷 +82 (South Korea)</option>
+                                            <option value="+86"  data-flag="cn"  data-digits="11">🇨🇳 +86 (China)</option>
+                                            <option value="+55"  data-flag="br"  data-digits="11">🇧🇷 +55 (Brazil)</option>
+                                            <option value="+52"  data-flag="mx"  data-digits="10">🇲🇽 +52 (Mexico)</option>
+                                            <option value="+27"  data-flag="za"  data-digits="9" >🇿🇦 +27 (South Africa)</option>
+                                            <option value="+234" data-flag="ng"  data-digits="10">🇳🇬 +234 (Nigeria)</option>
+                                            <option value="+20"  data-flag="eg"  data-digits="10">🇪🇬 +20 (Egypt)</option>
+                                            <option value="+92"  data-flag="pk"  data-digits="10">🇵🇰 +92 (Pakistan)</option>
+                                            <option value="+880" data-flag="bd"  data-digits="10">🇧🇩 +880 (Bangladesh)</option>
+                                            <option value="+94"  data-flag="lk"  data-digits="9" >🇱🇰 +94 (Sri Lanka)</option>
+                                            <option value="+977" data-flag="np"  data-digits="10">🇳🇵 +977 (Nepal)</option>
+                                            <option value="+95"  data-flag="mm"  data-digits="9" >🇲🇲 +95 (Myanmar)</option>
+                                            <option value="+62"  data-flag="id"  data-digits="10">🇮🇩 +62 (Indonesia)</option>
+                                            <option value="+63"  data-flag="ph"  data-digits="10">🇵🇭 +63 (Philippines)</option>
+                                            <option value="+66"  data-flag="th"  data-digits="9" >🇹🇭 +66 (Thailand)</option>
+                                            <option value="+84"  data-flag="vn"  data-digits="9" >🇻🇳 +84 (Vietnam)</option>
+                                            <option value="+7"   data-flag="ru"  data-digits="10">🇷🇺 +7 (Russia)</option>
+                                            <option value="+90"  data-flag="tr"  data-digits="10">🇹🇷 +90 (Turkey)</option>
+                                            <option value="+972" data-flag="il"  data-digits="9" >🇮🇱 +972 (Israel)</option>
+                                            <option value="+98"  data-flag="ir"  data-digits="10">🇮🇷 +98 (Iran)</option>
+                                            <option value="+254" data-flag="ke"  data-digits="9" >🇰🇪 +254 (Kenya)</option>
+                                            <option value="+233" data-flag="gh"  data-digits="9" >🇬🇭 +233 (Ghana)</option>
+                                            <option value="+256" data-flag="ug"  data-digits="9" >🇺🇬 +256 (Uganda)</option>
+                                            <option value="+255" data-flag="tz"  data-digits="9" >🇹🇿 +255 (Tanzania)</option>
+                                            <option value="+212" data-flag="ma"  data-digits="9" >🇲🇦 +212 (Morocco)</option>
+                                            <option value="+213" data-flag="dz"  data-digits="9" >🇩🇿 +213 (Algeria)</option>
+                                            <option value="+216" data-flag="tn"  data-digits="8" >🇹🇳 +216 (Tunisia)</option>
+                                            <option value="+64"  data-flag="nz"  data-digits="9" >🇳🇿 +64 (New Zealand)</option>
+                                            <option value="+54"  data-flag="ar"  data-digits="10">🇦🇷 +54 (Argentina)</option>
+                                            <option value="+56"  data-flag="cl"  data-digits="9" >🇨🇱 +56 (Chile)</option>
+                                            <option value="+57"  data-flag="co"  data-digits="10">🇨🇴 +57 (Colombia)</option>
+                                            <option value="+51"  data-flag="pe"  data-digits="9" >🇵🇪 +51 (Peru)</option>
+                                            <option value="+58"  data-flag="ve"  data-digits="7" >🇻🇪 +58 (Venezuela)</option>
+                                            <option value="+47"  data-flag="no"  data-digits="8" >🇳🇴 +47 (Norway)</option>
+                                            <option value="+46"  data-flag="se"  data-digits="9" >🇸🇪 +46 (Sweden)</option>
+                                            <option value="+45"  data-flag="dk"  data-digits="8" >🇩🇰 +45 (Denmark)</option>
+                                            <option value="+358" data-flag="fi"  data-digits="9" >🇫🇮 +358 (Finland)</option>
+                                            <option value="+41"  data-flag="ch"  data-digits="9" >🇨🇭 +41 (Switzerland)</option>
+                                            <option value="+43"  data-flag="at"  data-digits="10">🇦🇹 +43 (Austria)</option>
+                                            <option value="+32"  data-flag="be"  data-digits="9" >🇧🇪 +32 (Belgium)</option>
+                                            <option value="+351" data-flag="pt"  data-digits="9" >🇵🇹 +351 (Portugal)</option>
+                                            <option value="+30"  data-flag="gr"  data-digits="10">🇬🇷 +30 (Greece)</option>
+                                            <option value="+48"  data-flag="pl"  data-digits="9" >🇵🇱 +48 (Poland)</option>
+                                            <option value="+420" data-flag="cz"  data-digits="9" >🇨🇿 +420 (Czech Republic)</option>
+                                            <option value="+36"  data-flag="hu"  data-digits="9" >🇭🇺 +36 (Hungary)</option>
+                                            <option value="+40"  data-flag="ro"  data-digits="9" >🇷🇴 +40 (Romania)</option>
+                                            <option value="+380" data-flag="ua"  data-digits="9" >🇺🇦 +380 (Ukraine)</option>
+                                        </select>
+                                    </div>
+                                    <input type="tel" id="phone" name="phone" class="item phone-number-input" placeholder="Enter 10-digit number"/>
+                                </div>
+                                <span class="error-message" id="phoneError" style="display:none;">Please enter a valid phone number for the selected country.</span>
 
                                 <div class="padding-vertical padding-xsmall">
                                     <div class="form_field-wrapper-3">
@@ -2363,13 +2532,62 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 
-    var form      = document.getElementById('contactForm');
-    var submitBtn = document.getElementById('submitBtn');
+    var form          = document.getElementById('contactForm');
+    var submitBtn     = document.getElementById('submitBtn');
+    var phoneInput    = document.getElementById('phone');
+    var phoneError    = document.getElementById('phoneError');
+    var countrySelect = document.getElementById('countryCode');
+    var selectedFlag  = document.getElementById('selectedFlag');
+    var codeDisplay   = document.getElementById('countryCodeDisplay');
+    var phoneWrapper  = document.querySelector('.phone-input-wrapper');
+
+    // Update flag + code display when country changes
+    countrySelect.addEventListener('change', function() {
+        var selected = this.options[this.selectedIndex];
+        var flag     = selected.getAttribute('data-flag');
+        var digits   = selected.getAttribute('data-digits');
+        selectedFlag.src            = 'https://flagcdn.com/w20/' + flag + '.png';
+        selectedFlag.alt            = flag.toUpperCase();
+        codeDisplay.textContent     = selected.value;
+        phoneInput.placeholder      = 'Enter ' + digits + '-digit number';
+        if (phoneInput.value.trim()) validatePhone();
+    });
+
+    function getExpectedDigits() {
+        var selected = countrySelect.options[countrySelect.selectedIndex];
+        return parseInt(selected.getAttribute('data-digits'));
+    }
+
+    function validatePhone() {
+        var val    = phoneInput.value.trim();
+        var digits = getExpectedDigits();
+        var regex  = new RegExp('^[0-9]{' + digits + '}$');
+        if (val !== '' && !regex.test(val)) {
+            phoneWrapper.classList.add('error');
+            phoneError.style.display = 'block';
+            return false;
+        } else {
+            phoneWrapper.classList.remove('error');
+            phoneError.style.display = 'none';
+            return true;
+        }
+    }
+
+    // Only allow digits, live validate
+    phoneInput.addEventListener('input', function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+        if (this.value.trim()) {
+            validatePhone();
+        } else {
+            phoneWrapper.classList.remove('error');
+            phoneError.style.display = 'none';
+        }
+    });
 
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
 
-        // Validation
+        // Required fields validation
         var requiredItems = form.querySelectorAll('.item[required]');
         var isValid = true;
         requiredItems.forEach(function(item) {
@@ -2381,6 +2599,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
+        // Phone validation
+        if (!validatePhone()) isValid = false;
+
+        // Query type
         var queryType = document.querySelector('input[name="query-type"]:checked');
         if (!queryType) {
             Swal.fire({ title: 'Oops!', text: 'Please select a Query Type.', icon: 'warning' });
@@ -2388,34 +2610,41 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (!isValid) {
-            Swal.fire({ title: 'Oops!', text: 'Please fill in all required fields.', icon: 'warning' });
+            Swal.fire({ title: 'Oops!', text: 'Please fill in all required fields correctly.', icon: 'warning' });
             return;
         }
 
-        // Disable button while sending
         submitBtn.disabled    = true;
         submitBtn.textContent = 'Sending...';
 
-        // Build payload for Web3Forms
+        var fullPhone = phoneInput.value.trim()
+            ? countrySelect.value + ' ' + phoneInput.value.trim()
+            : '';
+
         var formData = new FormData();
-        formData.append('access_key',  '6196fc18-eeb7-4680-b9c0-8a525efb3b87');
-        formData.append('name',        document.getElementById('name').value);
-        formData.append('email',       document.getElementById('email').value);
-        formData.append('phone',       document.getElementById('phone').value);
-        formData.append('query_type',  queryType.value);
-        formData.append('subject',     document.getElementById('subject').value || 'New Contact Form Submission');
-        formData.append('message',     document.getElementById('message').value);
+        formData.append('access_key', '6196fc18-eeb7-4680-b9c0-8a525efb3b87');
+        formData.append('name',       document.getElementById('name').value);
+        formData.append('email',      document.getElementById('email').value);
+        formData.append('phone',      fullPhone);
+        formData.append('query_type', queryType.value);
+        formData.append('subject',    document.getElementById('subject').value || 'New Contact Form Submission');
+        formData.append('message',    document.getElementById('message').value);
 
         try {
             var response = await fetch('https://api.web3forms.com/submit', {
-                method:  'POST',
-                body:    formData
+                method: 'POST',
+                body:   formData
             });
             var data = await response.json();
 
             if (data.success) {
                 Swal.fire({ title: 'Success!', text: 'Message sent successfully!', icon: 'success' });
                 form.reset();
+                codeDisplay.textContent  = '+91';
+                selectedFlag.src         = 'https://flagcdn.com/w20/in.png';
+                phoneInput.placeholder   = 'Enter 10-digit number';
+                phoneError.style.display = 'none';
+                phoneWrapper.classList.remove('error');
             } else {
                 Swal.fire({ title: 'Error!', text: data.message || 'Something went wrong.', icon: 'error' });
             }
@@ -2427,10 +2656,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Live error clearing
+    // Live error clearing for other fields
     document.querySelectorAll('.item').forEach(function(item) {
         item.addEventListener('input', function() {
-            if (this.value.trim()) {
+            if (this.id !== 'phone' && this.value.trim()) {
                 this.classList.remove('error');
             }
         });
@@ -2438,6 +2667,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 </script>
+
 
 </body>
 </html>
