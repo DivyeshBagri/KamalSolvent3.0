@@ -1153,12 +1153,6 @@
 
         /* ============================================================
            RESPONSIVE ADDITIONS — NEW SECTIONS
-           Sections: header19 (About), section_logo3 (Client Slider),
-                     section_logo2 (Certifications), section_layout32
-                     (Rice Bran Oil Features), section_gallery5 (Gallery),
-                     section_contact2 (Contact)
-           Breakpoints match By-Products pattern:
-             ≤ 991px | 600–900px | ≤ 767px | ≤ 479px
            ============================================================ */
 
         /* ============================================================
@@ -1187,9 +1181,6 @@
             .heading-style-h1.coloured                { font-size: 30px !important; }
 
             /* --- Gallery --- */
-            .gallery5_component                       { gap: 12px !important; }
-            .gallery5_row                             { gap: 12px !important; }
-            .gallery5_image-wrapper                   { border-radius: 8px; overflow: hidden; }
             .section_gallery5 .heading-style-h2       { font-size: 28px !important; }
 
             /* --- Contact section --- */
@@ -1259,8 +1250,6 @@
             /* --- Gallery --- */
             .section_gallery5 .heading-style-h2       { font-size: 22px !important; }
             .section_gallery5 .text-size-medium-5     { font-size: 12px !important; letter-spacing: 1.5px; }
-            .gallery5_row                             { grid-template-columns: 1fr 1fr 1fr !important; gap: 8px !important; }
-            .gallery5_image                           { width: 100%; height: auto; }
 
             /* --- Contact --- */
             .section_contact2 .heading-style-h2       { font-size: 22px !important; }
@@ -1296,7 +1285,6 @@
 
             /* --- Gallery --- */
             .section_gallery5 .heading-style-h2       { font-size: 19px !important; }
-            .gallery5_row                             { grid-template-columns: 1fr 1fr 1fr !important; gap: 6px !important; }
 
             /* --- Contact --- */
             .section_contact2 .heading-style-h2       { font-size: 19px !important; }
@@ -1306,7 +1294,6 @@
 
         /* ============================================================
            LAPTOP VIEW (≥ 992px) — 22px top & bottom padding
-           for all sections EXCEPT the hero slider
            ============================================================ */
         @media (min-width: 992px) {
             .section_logo3,
@@ -1319,6 +1306,212 @@
             .section_contact2 {
                 padding-top: 22px !important;
                 padding-bottom: 22px !important;
+            }
+        }
+
+
+        /* ============================================================
+           FIX: Rice Bran Oil Features — section_layout32
+           ============================================================ */
+
+        /* Base layout: side-by-side on desktop */
+        .layout32_component {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .layout32_item-list {
+            display: grid;
+            gap: 24px;
+        }
+
+        .layout32_item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .layout32_item-icon-wrapper {
+            flex-shrink: 0;
+        }
+
+        .layout32_item-icon-wrapper img {
+            width: 48px;
+            height: auto;
+        }
+
+        .layout32_image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .layout32_image-wrapper {
+            width: 100%;
+        }
+
+        /* Tablet ≤ 991px — stack vertically, image on top */
+        @media (max-width: 991px) {
+            .layout32_component {
+                grid-template-columns: 1fr !important;
+                gap: 32px;
+            }
+            .layout32_image-wrapper {
+                order: -1;
+            }
+            .layout32_image {
+                width: 100%;
+                max-height: 400px;
+                object-fit: cover;
+            }
+        }
+
+        /* Mobile ≤ 767px */
+        @media (max-width: 767px) {
+            .section_layout32 {
+                padding-left: 4% !important;
+                padding-right: 4% !important;
+            }
+            .layout32_component {
+                gap: 20px;
+            }
+            .layout32_item {
+                gap: 12px !important;
+                align-items: flex-start;
+            }
+            .layout32_item-icon-wrapper img {
+                width: 36px !important;
+            }
+            .layout32_item-text-wrapper h3 {
+                font-size: 14px !important;
+                margin-bottom: 4px !important;
+            }
+            .layout32_item-text-wrapper p {
+                font-size: 13px !important;
+                line-height: 1.6;
+            }
+            .feature-heading { font-size: 14px !important; }
+            .feature-text    { font-size: 13px !important; }
+            .heading-style-h1.coloured {
+                font-size: 20px !important;
+                line-height: 1.3 !important;
+            }
+            .layout32_image {
+                max-height: 280px;
+            }
+        }
+
+        /* Small mobile ≤ 479px */
+        @media (max-width: 479px) {
+            .layout32_item-icon-wrapper img {
+                width: 30px !important;
+            }
+            .layout32_item {
+                gap: 10px !important;
+            }
+            .layout32_item-text-wrapper h3 {
+                font-size: 13px !important;
+            }
+            .layout32_item-text-wrapper p {
+                font-size: 12px !important;
+            }
+            .feature-heading { font-size: 13px !important; }
+            .feature-text    { font-size: 12px !important; }
+            .heading-style-h1.coloured {
+                font-size: 18px !important;
+            }
+            .layout32_image {
+                max-height: 220px;
+            }
+        }
+
+
+        /* ============================================================
+           FIX: Image Gallery — section_gallery5
+           Breakpoints:
+             Desktop  ≥ 768px  → 3 columns (original)
+             Tablet   600–767px → 2 columns
+             Mobile   < 600px  → 1 column, full image, no crop
+           ============================================================ */
+
+        .gallery5_component {
+            display: grid !important;
+            gap: 16px;
+        }
+
+        /* Each row becomes a grid itself */
+        .gallery5_row {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 16px !important;
+        }
+
+        .gallery5_lightbox-link {
+            display: block;
+            width: 100%;
+        }
+
+        /* Image wrapper — no fixed aspect-ratio so image is never cropped */
+        .gallery5_image-wrapper {
+            overflow: hidden;
+            border-radius: 10px;
+            width: 100%;
+            background: #f5f5f5;
+        }
+
+        /* Full image, never cropped */
+        .gallery5_image {
+            width: 100% !important;
+            height: auto !important;
+            display: block;
+            object-fit: contain !important;
+            transition: transform 0.35s ease;
+        }
+
+        .gallery5_lightbox-link:hover .gallery5_image {
+            transform: scale(1.03);
+        }
+
+        /* ── Tablet: 600–767px → 2 columns ── */
+        @media (min-width: 600px) and (max-width: 767px) {
+            .gallery5_component { gap: 12px !important; }
+            .gallery5_row {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 12px !important;
+            }
+            .gallery5_image-wrapper { border-radius: 8px; }
+            .section_gallery5 .heading-style-h2 { font-size: 22px !important; }
+            .section_gallery5 .text-size-medium-5 { font-size: 12px !important; }
+        }
+
+        /* ── Mobile: < 600px → 1 column, full image ── */
+        @media (max-width: 599px) {
+            .section_gallery5 {
+                padding-left: 4% !important;
+                padding-right: 4% !important;
+            }
+            .gallery5_component { gap: 12px !important; }
+            .gallery5_row {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+            .gallery5_image-wrapper {
+                border-radius: 8px;
+                width: 100%;
+            }
+            .gallery5_image {
+                width: 100% !important;
+                height: auto !important;
+                object-fit: contain !important;
+            }
+            .section_gallery5 .heading-style-h2 { font-size: 20px !important; }
+            .section_gallery5 .text-size-medium-5 {
+                font-size: 11px !important;
+                letter-spacing: 1.5px;
             }
         }
 
