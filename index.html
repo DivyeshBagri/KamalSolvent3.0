@@ -1571,6 +1571,81 @@
             .section_logo3 .heading-style-h4 { font-size: 16px !important; }
         }
 
+
+        /* ============================================================
+           PER-PRODUCT IMAGE FINE-TUNING
+           Adjust ONLY the values below — nothing else changes.
+
+           --img-scale   : zoom (1 = normal, 1.1 = 10% bigger, 0.9 = smaller)
+           --img-x       : shift left(-)/right(+) in px
+           --img-y       : shift up(-)/down(+) in px
+
+           The hover scale from .brand-card:hover .brand-card-img-wrap img
+           still applies ON TOP of --img-scale at hover time.
+           ============================================================ */
+
+        /* 1. Kamal Rice Bran Oil */
+        .brand-card:nth-child(1) .brand-card-img-wrap img {
+            --img-scale : 1;
+            --img-x     : 0px;
+            --img-y     : 0px;
+            transform   : scale(var(--img-scale)) translate(var(--img-x), var(--img-y));
+            transform-origin: center center;
+        }
+
+        /* 2. Energy Max Rice Bran Oil */
+        .brand-card:nth-child(2) .brand-card-img-wrap img {
+            --img-scale : 1;
+            --img-x     : 0px;
+            --img-y     : 0px;
+            transform   : scale(var(--img-scale)) translate(var(--img-x), var(--img-y));
+            transform-origin: center center;
+        }
+
+        /* 3. Kamal Chakki Atta */
+        .brand-card:nth-child(3) .brand-card-img-wrap img {
+            --img-scale : 1;
+            --img-x     : 0px;
+            --img-y     : 0px;
+            transform   : scale(var(--img-scale)) translate(var(--img-x), var(--img-y));
+            transform-origin: center center;
+        }
+
+        /* 4. Kamal Suji */
+        .brand-card:nth-child(4) .brand-card-img-wrap img {
+            --img-scale : 1;
+            --img-x     : 0px;
+            --img-y     : 0px;
+            transform   : scale(var(--img-scale)) translate(var(--img-x), var(--img-y));
+            transform-origin: center center;
+        }
+
+        /* 5. Kamal Maida */
+        .brand-card:nth-child(5) .brand-card-img-wrap img {
+            --img-scale : 1;
+            --img-x     : 0px;
+            --img-y     : 0px;
+            transform   : scale(var(--img-scale)) translate(var(--img-x), var(--img-y));
+            transform-origin: center center;
+        }
+
+        /* 6. By-products */
+        .brand-card:nth-child(6) .brand-card-img-wrap img {
+            --img-scale : 1;
+            --img-x     : 0px;
+            --img-y     : 0px;
+            transform   : scale(var(--img-scale)) translate(var(--img-x), var(--img-y));
+            transform-origin: center center;
+        }
+
+        /* Keep hover scale working on top of the per-product transform */
+        .brand-card:nth-child(1):hover .brand-card-img-wrap img { transform: scale(calc(var(--img-scale) * 1.06)) translate(var(--img-x), var(--img-y)); }
+        .brand-card:nth-child(2):hover .brand-card-img-wrap img { transform: scale(calc(var(--img-scale) * 1.06)) translate(var(--img-x), var(--img-y)); }
+        .brand-card:nth-child(3):hover .brand-card-img-wrap img { transform: scale(calc(var(--img-scale) * 1.06)) translate(var(--img-x), var(--img-y)); }
+        .brand-card:nth-child(4):hover .brand-card-img-wrap img { transform: scale(calc(var(--img-scale) * 1.06)) translate(var(--img-x), var(--img-y)); }
+        .brand-card:nth-child(5):hover .brand-card-img-wrap img { transform: scale(calc(var(--img-scale) * 1.06)) translate(var(--img-x), var(--img-y)); }
+        .brand-card:nth-child(6):hover .brand-card-img-wrap img { transform: scale(calc(var(--img-scale) * 1.06)) translate(var(--img-x), var(--img-y)); }
+
     </style>
 
     <script>
@@ -2671,5 +2746,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </body>
 </html>
-
-
