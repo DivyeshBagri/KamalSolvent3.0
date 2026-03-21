@@ -2284,7 +2284,7 @@
                                 <input type="text" id="name" name="name" class="item" required/>
 
                                 <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" class="item" required/>
+                                <input type="email" id="email" name="email" class="item"/>
 
                                 <label for="phone">Phone Number:</label>
                                 <div class="phone-input-wrapper">
@@ -2357,7 +2357,7 @@
                                             <option value="+380" data-flag="ua"  data-digits="9" >🇺🇦 +380 (Ukraine)</option>
                                         </select>
                                     </div>
-                                    <input type="tel" id="phone" name="phone" class="item phone-number-input" placeholder="Enter 10-digit number"/>
+                                    <input type="tel" id="phone" name="phone" class="item phone-number-input" placeholder="Enter 10-digit number" required/>
                                 </div>
                                 <span class="error-message" id="phoneError" style="display:none;">Please enter a valid phone number for the selected country.</span>
 
@@ -2639,7 +2639,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var val    = phoneInput.value.trim();
         var digits = getExpectedDigits();
         var regex  = new RegExp('^[0-9]{' + digits + '}$');
-        if (val !== '' && !regex.test(val)) {
+        if (!regex.test(val)) {
             phoneWrapper.classList.add('error');
             phoneError.style.display = 'block';
             return false;
